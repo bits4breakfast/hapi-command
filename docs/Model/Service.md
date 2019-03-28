@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **price** | **float** | cost of service | [optional] 
 **cost_type** | **string** | how is the service or charge priced | [optional] 
 **quantity** | **int** | number of service or fixed charge items | [optional] 
-**dates** | [**\Hapi\Model\TimeSpan**](TimeSpan.md) |  | [optional] 
+**dates** | [**\HapiCommand\Model\TimeSpan**](TimeSpan.md) |  | [optional] 
 **comment** | **string** | Fixed charge additional information | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

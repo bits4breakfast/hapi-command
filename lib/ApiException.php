@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Hapi;
+namespace HapiCommand;
 
 use \Exception;
 
@@ -33,7 +33,7 @@ use \Exception;
  * ApiException Class Doc Comment
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */

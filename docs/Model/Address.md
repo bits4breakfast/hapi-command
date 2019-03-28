@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **address2** | **string** | second line of address. typically contains apartment info | [optional] 
 **address3** | **string** | third line of address | [optional] 
 **city** | **string** | city associated to address | [optional] 
-**state_province** | [**\Hapi\Model\StateProvince**](StateProvince.md) |  | [optional] 
+**state_province** | [**\HapiCommand\Model\StateProvince**](StateProvince.md) |  | [optional] 
 **postal_code** | **string** | postal or zip code associated to address | [optional] 
-**country** | [**\Hapi\Model\Country**](Country.md) |  | [optional] 
+**country** | [**\HapiCommand\Model\Country**](Country.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

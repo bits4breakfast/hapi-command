@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -25,17 +25,17 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace Hapi;
+namespace HapiCommand;
 
-use Hapi\Configuration;
-use Hapi\ApiException;
-use Hapi\ObjectSerializer;
+use HapiCommand\Configuration;
+use HapiCommand\ApiException;
+use HapiCommand\ObjectSerializer;
 
 /**
  * CommandApiTest Class Doc Comment
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */

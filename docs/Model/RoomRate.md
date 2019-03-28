@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**effective_dates** | [**\Hapi\Model\TimeSpan**](TimeSpan.md) |  | [optional] 
+**effective_dates** | [**\HapiCommand\Model\TimeSpan**](TimeSpan.md) |  | [optional] 
 **rate_code** | **string** | code identifying the rate | [optional] 
 **currency_code** | **string** | currency code of revenue amount indicated | [optional] 
 **amount** | **float** | rate amount | [optional] 

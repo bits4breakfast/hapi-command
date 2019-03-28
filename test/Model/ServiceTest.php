@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,14 +26,14 @@
  * Please update the test case below to test the model.
  */
 
-namespace Hapi;
+namespace HapiCommand;
 
 /**
  * ServiceTest Class Doc Comment
  *
  * @category    Class
  * @description service or fixed charge related to reservation
- * @package     Hapi
+ * @package     HapiCommand
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */

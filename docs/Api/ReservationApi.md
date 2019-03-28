@@ -1,4 +1,4 @@
-# Hapi\ReservationApi
+# HapiCommand\ReservationApi
 
 All URIs are relative to *https://hapicloud-dev.apigee.net/api*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**updateReservation**](ReservationApi.md#updateReservation) | **PUT** /reservations | Update reservation
 
 # **cancelReservation**
-> \Hapi\Model\CommandProgressStatusDto cancelReservation($id, $body)
+> \HapiCommand\Model\CommandProgressStatusDto cancelReservation($id, $body)
 
 Cancel reservation
 
@@ -20,18 +20,18 @@ Cancel reservation operation in external system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Bearer
-$config = Hapi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = HapiCommand\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Hapi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = HapiCommand\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new Hapi\Api\ReservationApi(
+$apiInstance = new HapiCommand\Api\ReservationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $id = "id_example"; // string | Reservation id for the operation
-$body = new \Hapi\Model\Reservation(); // \Hapi\Model\Reservation | 
+$body = new \HapiCommand\Model\Reservation(); // \HapiCommand\Model\Reservation | 
 
 try {
     $result = $apiInstance->cancelReservation($id, $body);
@@ -47,11 +47,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**string**](../Model/.md)| Reservation id for the operation |
- **body** | [**\Hapi\Model\Reservation**](../Model/Reservation.md)|  | [optional]
+ **body** | [**\HapiCommand\Model\Reservation**](../Model/Reservation.md)|  | [optional]
 
 ### Return type
 
-[**\Hapi\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createReservation**
-> \Hapi\Model\CommandProgressStatusDto createReservation($body)
+> \HapiCommand\Model\CommandProgressStatusDto createReservation($body)
 
 Create reservation
 
@@ -76,17 +76,17 @@ Create reservation operation in external system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Bearer
-$config = Hapi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = HapiCommand\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Hapi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = HapiCommand\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new Hapi\Api\ReservationApi(
+$apiInstance = new HapiCommand\Api\ReservationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Hapi\Model\Reservation(); // \Hapi\Model\Reservation | 
+$body = new \HapiCommand\Model\Reservation(); // \HapiCommand\Model\Reservation | 
 
 try {
     $result = $apiInstance->createReservation($body);
@@ -101,11 +101,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Hapi\Model\Reservation**](../Model/Reservation.md)|  |
+ **body** | [**\HapiCommand\Model\Reservation**](../Model/Reservation.md)|  |
 
 ### Return type
 
-[**\Hapi\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
 
 ### Authorization
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateReservation**
-> \Hapi\Model\CommandProgressStatusDto updateReservation($body)
+> \HapiCommand\Model\CommandProgressStatusDto updateReservation($body)
 
 Update reservation
 
@@ -130,17 +130,17 @@ Update reservation operation in external system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Bearer
-$config = Hapi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = HapiCommand\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Hapi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = HapiCommand\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new Hapi\Api\ReservationApi(
+$apiInstance = new HapiCommand\Api\ReservationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Hapi\Model\Reservation(); // \Hapi\Model\Reservation | 
+$body = new \HapiCommand\Model\Reservation(); // \HapiCommand\Model\Reservation | 
 
 try {
     $result = $apiInstance->updateReservation($body);
@@ -155,11 +155,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Hapi\Model\Reservation**](../Model/Reservation.md)|  |
+ **body** | [**\HapiCommand\Model\Reservation**](../Model/Reservation.md)|  |
 
 ### Return type
 
-[**\Hapi\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
 
 ### Authorization
 

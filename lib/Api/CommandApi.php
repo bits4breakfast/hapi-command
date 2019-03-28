@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Hapi\Api;
+namespace HapiCommand\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -33,16 +33,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Hapi\ApiException;
-use Hapi\Configuration;
-use Hapi\HeaderSelector;
-use Hapi\ObjectSerializer;
+use HapiCommand\ApiException;
+use HapiCommand\Configuration;
+use HapiCommand\HeaderSelector;
+use HapiCommand\ObjectSerializer;
 
 /**
  * CommandApi Class Doc Comment
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -92,9 +92,9 @@ class CommandApi
 *
 * @param  string $id ID returned as the result of async operation (required)
 *
-     * @throws \Hapi\ApiException on non-2xx response
+     * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Hapi\Model\CommandProgressStatusDto
+     * @return \HapiCommand\Model\CommandProgressStatusDto
      */
     public function commandStatus($id)
     {
@@ -109,13 +109,13 @@ class CommandApi
 *
 * @param  string $id ID returned as the result of async operation (required)
 *
-     * @throws \Hapi\ApiException on non-2xx response
+     * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Hapi\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function commandStatusWithHttpInfo($id)
     {
-        $returnType = '\Hapi\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
         $request = $this->commandStatusRequest($id);
 
         try {
@@ -174,21 +174,21 @@ $responseBody = $response->getBody();
             switch ($e->getCode()) {
 case 200:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatusDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 400:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\ResponsesNoCommandFound',
+                        '\HapiCommand\Model\ResponsesNoCommandFound',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 401:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\ResponsesUnauthorized',
+                        '\HapiCommand\Model\ResponsesUnauthorized',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -230,7 +230,7 @@ case 401:$data = ObjectSerializer::deserialize(
      */
     public function commandStatusAsyncWithHttpInfo($id)
     {
-        $returnType = '\Hapi\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
         $request = $this->commandStatusRequest($id);
 
         return $this->client

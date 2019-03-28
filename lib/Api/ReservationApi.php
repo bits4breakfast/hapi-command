@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Hapi\Api;
+namespace HapiCommand\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -33,16 +33,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Hapi\ApiException;
-use Hapi\Configuration;
-use Hapi\HeaderSelector;
-use Hapi\ObjectSerializer;
+use HapiCommand\ApiException;
+use HapiCommand\Configuration;
+use HapiCommand\HeaderSelector;
+use HapiCommand\ObjectSerializer;
 
 /**
  * ReservationApi Class Doc Comment
  *
  * @category Class
- * @package  Hapi
+ * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -91,11 +91,11 @@ class ReservationApi
      * Cancel reservation
 *
 * @param  string $id Reservation id for the operation (required)
-* @param  \Hapi\Model\Reservation $body body (optional)
+* @param  \HapiCommand\Model\Reservation $body body (optional)
 *
-     * @throws \Hapi\ApiException on non-2xx response
+     * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Hapi\Model\CommandProgressStatusDto
+     * @return \HapiCommand\Model\CommandProgressStatusDto
      */
     public function cancelReservation($id, $body = null)
     {
@@ -109,15 +109,15 @@ class ReservationApi
      * Cancel reservation
 *
 * @param  string $id Reservation id for the operation (required)
-* @param  \Hapi\Model\Reservation $body (optional)
+* @param  \HapiCommand\Model\Reservation $body (optional)
 *
-     * @throws \Hapi\ApiException on non-2xx response
+     * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Hapi\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelReservationWithHttpInfo($id, $body = null)
     {
-        $returnType = '\Hapi\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
         $request = $this->cancelReservationRequest($id, $body);
 
         try {
@@ -176,21 +176,21 @@ $responseBody = $response->getBody();
             switch ($e->getCode()) {
 case 200:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatusDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 400:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\ResponsesNoChannelFound',
+                        '\HapiCommand\Model\ResponsesNoChannelFound',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 401:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\ResponsesUnauthorized',
+                        '\HapiCommand\Model\ResponsesUnauthorized',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -206,7 +206,7 @@ case 401:$data = ObjectSerializer::deserialize(
      * Cancel reservation
      *
 * @param  string $id Reservation id for the operation (required)
-* @param  \Hapi\Model\Reservation $body (optional)
+* @param  \HapiCommand\Model\Reservation $body (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -227,14 +227,14 @@ case 401:$data = ObjectSerializer::deserialize(
      * Cancel reservation
      *
 * @param  string $id Reservation id for the operation (required)
-* @param  \Hapi\Model\Reservation $body (optional)
+* @param  \HapiCommand\Model\Reservation $body (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function cancelReservationAsyncWithHttpInfo($id, $body = null)
     {
-        $returnType = '\Hapi\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
         $request = $this->cancelReservationRequest($id, $body);
 
         return $this->client
@@ -278,7 +278,7 @@ $responseBody = $response->getBody();
      * Create request for operation 'cancelReservation'
      *
 * @param  string $id Reservation id for the operation (required)
-* @param  \Hapi\Model\Reservation $body (optional)
+* @param  \HapiCommand\Model\Reservation $body (optional)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -380,11 +380,11 @@ $defaultHeaders = [];
 *
      * Create reservation
 *
-* @param  \Hapi\Model\Reservation $body body (required)
+* @param  \HapiCommand\Model\Reservation $body body (required)
 *
-     * @throws \Hapi\ApiException on non-2xx response
+     * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Hapi\Model\CommandProgressStatusDto
+     * @return \HapiCommand\Model\CommandProgressStatusDto
      */
     public function createReservation($body)
     {
@@ -397,15 +397,15 @@ $defaultHeaders = [];
 *
      * Create reservation
 *
-* @param  \Hapi\Model\Reservation $body (required)
+* @param  \HapiCommand\Model\Reservation $body (required)
 *
-     * @throws \Hapi\ApiException on non-2xx response
+     * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Hapi\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function createReservationWithHttpInfo($body)
     {
-        $returnType = '\Hapi\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
         $request = $this->createReservationRequest($body);
 
         try {
@@ -464,21 +464,21 @@ $responseBody = $response->getBody();
             switch ($e->getCode()) {
 case 200:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatusDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 400:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\ResponsesNoChannelFound',
+                        '\HapiCommand\Model\ResponsesNoChannelFound',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 401:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\ResponsesUnauthorized',
+                        '\HapiCommand\Model\ResponsesUnauthorized',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -493,7 +493,7 @@ case 401:$data = ObjectSerializer::deserialize(
      *
      * Create reservation
      *
-* @param  \Hapi\Model\Reservation $body (required)
+* @param  \HapiCommand\Model\Reservation $body (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -513,14 +513,14 @@ case 401:$data = ObjectSerializer::deserialize(
      *
      * Create reservation
      *
-* @param  \Hapi\Model\Reservation $body (required)
+* @param  \HapiCommand\Model\Reservation $body (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createReservationAsyncWithHttpInfo($body)
     {
-        $returnType = '\Hapi\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
         $request = $this->createReservationRequest($body);
 
         return $this->client
@@ -563,7 +563,7 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'createReservation'
      *
-* @param  \Hapi\Model\Reservation $body (required)
+* @param  \HapiCommand\Model\Reservation $body (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -657,11 +657,11 @@ $defaultHeaders = [];
 *
      * Update reservation
 *
-* @param  \Hapi\Model\Reservation $body body (required)
+* @param  \HapiCommand\Model\Reservation $body body (required)
 *
-     * @throws \Hapi\ApiException on non-2xx response
+     * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Hapi\Model\CommandProgressStatusDto
+     * @return \HapiCommand\Model\CommandProgressStatusDto
      */
     public function updateReservation($body)
     {
@@ -674,15 +674,15 @@ $defaultHeaders = [];
 *
      * Update reservation
 *
-* @param  \Hapi\Model\Reservation $body (required)
+* @param  \HapiCommand\Model\Reservation $body (required)
 *
-     * @throws \Hapi\ApiException on non-2xx response
+     * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Hapi\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateReservationWithHttpInfo($body)
     {
-        $returnType = '\Hapi\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
         $request = $this->updateReservationRequest($body);
 
         try {
@@ -741,21 +741,21 @@ $responseBody = $response->getBody();
             switch ($e->getCode()) {
 case 200:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatusDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 400:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\ResponsesNoChannelFound',
+                        '\HapiCommand\Model\ResponsesNoChannelFound',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 401:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\Hapi\Model\ResponsesUnauthorized',
+                        '\HapiCommand\Model\ResponsesUnauthorized',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -770,7 +770,7 @@ case 401:$data = ObjectSerializer::deserialize(
      *
      * Update reservation
      *
-* @param  \Hapi\Model\Reservation $body (required)
+* @param  \HapiCommand\Model\Reservation $body (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -790,14 +790,14 @@ case 401:$data = ObjectSerializer::deserialize(
      *
      * Update reservation
      *
-* @param  \Hapi\Model\Reservation $body (required)
+* @param  \HapiCommand\Model\Reservation $body (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updateReservationAsyncWithHttpInfo($body)
     {
-        $returnType = '\Hapi\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
         $request = $this->updateReservationRequest($body);
 
         return $this->client
@@ -840,7 +840,7 @@ $responseBody = $response->getBody();
     /**
      * Create request for operation 'updateReservation'
      *
-* @param  \Hapi\Model\Reservation $body (required)
+* @param  \HapiCommand\Model\Reservation $body (required)
 *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

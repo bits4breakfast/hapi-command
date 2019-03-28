@@ -28,9 +28,9 @@
         "friendsofphp/php-cs-fixer": "~1.12"
     },
     "autoload": {
-        "psr-4": { "Hapi\\" : "lib/" }
+        "psr-4": { "HapiCommand\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "Hapi\\" : "test/" }
+        "psr-4": { "HapiCommand\\" : "test/" }
     }
 }
