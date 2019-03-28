@@ -1,0 +1,552 @@
+swagger: '2.0'
+host: hapicloud-dev.apigee.net
+info:
+  version: v1
+  title: HAPI Command API
+schemes:
+  - https
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+basePath: /api
+paths:
+  '/reservations':
+    post:
+      operationId: CreateReservation
+      summary: Create reservation
+      description: Create reservation operation in external system
+      tags:
+        - Reservation
+      security:
+        - Bearer: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/CommandProgressStatusDto'
+        '400':
+          description: NoChannelFound
+          schema:
+            $ref: '#/responses/NoChannelFound'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/responses/Unauthorized'
+      parameters:
+        - in: body
+          schema:
+            $ref: '#/definitions/Reservation'
+          name: Reservation
+          required: true
+    put:
+      operationId: UpdateReservation
+      summary: Update reservation
+      description: Update reservation operation in external system
+      tags:
+        - Reservation
+      security:
+        - Bearer: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/CommandProgressStatusDto'
+        '400':
+          description: NoChannelFound
+          schema:
+            $ref: '#/responses/NoChannelFound'
+        '401':
+          description: Unauthorized
+          schema:   
+            $ref: '#/responses/Unauthorized'
+      parameters:
+        - in: body
+          schema:
+            $ref: '#/definitions/Reservation'
+          name: Reservation
+          required: true
+  '/reservations/{id}/cancel':
+    post:
+      operationId: CancelReservation
+      summary: Cancel reservation
+      description: Cancel reservation operation in external system
+      tags:
+          - Reservation
+      security:
+          - Bearer: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/CommandProgressStatusDto'
+        '400':
+          description: NoChannelFound
+          schema:
+            $ref: '#/responses/NoChannelFound'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/responses/Unauthorized'
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: Reservation id for the operation
+          required: true
+        - in: body
+          schema:
+            $ref: '#/definitions/Reservation'
+          name: Reservation
+          required: false
+  '/commands/{id}':
+    get:
+      operationId: commandStatus
+      summary: Command Status
+      description: Return command status of the running async operation
+      tags:
+        - Command
+      security:
+        - Bearer: []
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: ID returned as the result of async operation
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/CommandProgressStatusDto'
+        '400':
+          description: NoCommandFound
+          schema:
+            $ref: '#/responses/NoCommandFound'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/responses/Unauthorized'
+definitions:
+  TimeSpan:
+        title: TimeSpan
+        type: object
+        description: Duration of event
+        properties:
+            start:
+                type: string
+                description: begin date of span, in YYYY-MM-DD format
+                example: '2018-12-01'
+            end:
+                type: string
+                description: end date of span, in YYYY-MM-DD format
+                example: '2018-12-03'
+  Reservation:
+        title: Reservation
+        type: object
+        properties:
+          'id':
+              type: string
+              description: pms reservation id and object key
+              example: 542154
+          bookingConfirmationId:
+              type: string
+              description: crs reservation id
+              example: L7RR1A
+          arrivalDate:
+              type: string
+              description: 'check-in date, in YYYY-MM-DD format'
+              example: '2018-08-23'
+          arrivalTime:
+              type: string
+              description: estimated check-in time
+              example: 5:00PM
+          departureDate:
+              type: string
+              description: 'check-out date, in YYYY-MM-DD format'
+              example: '2018-08-25'
+          cancellationNumber:
+              type: string
+              description: >-
+                  cancellation number for reservation. may be supplied externally or
+                  returned from pms
+              example: CXL12345
+          adults:
+              type: integer
+              example: 2
+          children:
+              type: integer
+              example: 1
+          guests:
+              type: array
+              description: guest profiles associated to reservation
+              items:
+                  $ref: '#/definitions/Guest'
+          profiles:
+              type: array
+              description: non-guest profiles associated to reservation
+              items:
+                  $ref: '#/definitions/Profile'
+          roomStays:
+              type: array
+              description: room stay information associated to reservation
+              items:
+                  $ref: '#/definitions/RoomStay'
+          comments:
+              type: array
+              example: Guest will be arriving by spaceship
+              items:
+                  $ref: '#/definitions/Comment'
+  RoomStay:
+        title: RoomStay
+        type: object
+        properties:
+            roomNumber:
+                type: string
+                description: room number for stay
+                example: '122'
+            roomType:
+                type: string
+                description: code identifying the type of room associated to stay
+                example: KING
+            rateCode:
+                type: string
+                description: code identifying rate for stay
+                example: AAA
+            marketCode:
+                type: string
+                description: code identifying marketing type for rate
+                example: F
+            channelCode:
+                type: string
+                description: code identifying source of reservation
+                example: DM
+            sourceCode:
+                type: string
+                description: code identifying source of rate associated to stay
+                example: SRC
+            blockCode:
+                type: string
+                description: group block code
+                example: GROUPBLOCK
+            paymentMethod:
+                type: string
+                description: payment method used in the reservation
+                example: CA
+            rates:
+                type: array
+                items:
+                    $ref: '#/definitions/RoomRate'
+            services:
+                type: array
+                items:
+                    $ref: '#/definitions/Service'
+  Guest:
+        title: Guest
+        type: object
+        description: profile info for guest(s)
+        properties:
+            profile:
+                $ref: '#/definitions/Profile'
+            IsPrimary:
+                type: boolean
+                description: designates if primary guest on reservation
+                example: true
+  Profile:
+        title: Profile
+        type: object
+        properties:
+            id:
+                type: string
+                description: reservation identifier
+                example: 542154
+            type:
+                type: string
+                example: PERSON
+            name:
+                $ref: '#/definitions/Name'
+            dateOfBirth:
+                type: string
+                example: '1979-10-31'
+            emails:
+                type: array
+                items:
+                    $ref: '#/definitions/Email'
+            phones:
+                type: array
+                items:
+                    $ref: '#/definitions/Phone'
+            addresses:
+                type: array
+                items:
+                    $ref: '#/definitions/Address'
+  Address:
+      title: Address
+      type: object
+      properties:
+          type:
+              type: string
+              description: address type
+              example: BUSINESS
+          primary:
+              type: boolean
+              description: primary address flag
+              example: true
+          address1:
+              type: string
+              description: first line of address. typically contains street info
+              example: '1234 Park Ave'
+          address2:
+              type: string
+              description: second line of address. typically contains apartment info
+              example: 'APT 505'
+          address3:
+              type: string
+              description: third line of address
+          city:
+              type: string
+              description: city associated to address
+              example: Miami
+          stateProvince:
+              $ref: '#/definitions/StateProvince'
+          postalCode:
+              type: string
+              description: postal or zip code associated to address
+              example: '33133'
+          country:
+              $ref: '#/definitions/Country'
+  StateProvince:
+      title: StateProvince
+      type: object
+      properties:
+          code:
+              type: string
+              description: code identifying state or province associated to address
+              example: FL
+          name:
+              type: string
+              description: name of state or province associated to address
+              example: Florida
+  Country:
+      title: Country
+      type: object
+      properties:
+          code:
+              type: string
+              example: US
+          name:
+              type: string
+              example: United States
+  Phone:
+      title: Phone
+      type: object
+      properties:
+          type:
+              type: string
+              example: MOBILE
+          number:
+              type: string
+              example: '555-555-1212'
+  Email:
+      title: Email
+      type: object
+      properties:
+          type:
+              type: string
+              example: PRIVATE
+          address:
+              type: string
+              example: cguest@email.com
+  Name:
+        title: Name
+        type: object
+        description: name of profile holder
+        properties:
+            salutation:
+                type: string
+                description: salutation for guest
+                example: Mr.
+            first:
+                type: string
+                description: first name
+                example: Christopher
+            middle:
+                type: string
+                description: middle name or initial
+                example: M
+            last:
+                type: string
+                description: last name
+                example: Guest
+  Service:
+      title: Service
+      type: object
+      description: service or fixed charge related to reservation
+      properties:
+          id:
+              type: string
+              description: code that identifies service
+              example: '1500'
+          type:
+              type: string
+              description: service or fixed charge. defaults to SERVICE if not indicated
+              example: FIXED_CHARGE
+              enum: [SERVICE, FIXED_CHARGE]
+          price:
+              type: number
+              example: 45
+              description: cost of service
+          costType:
+              type: string
+              description: how is the service or charge priced
+              example: PER_STAY
+              enum: [PER_STAY, PER_NIGHT, PER_WEEK, PER_PERSON_PER_NIGHT]
+          quantity:
+              type: integer
+              description: number of service or fixed charge items
+              example: 1
+          dates:
+              $ref: '#/definitions/TimeSpan'
+          comment:
+              type: string
+              description: Fixed charge additional information
+              example: Upsell charge
+  RoomRate:
+      title: RoomRate
+      type: object
+      properties:
+          effectiveDates:
+              $ref: '#/definitions/TimeSpan'
+          rateCode:
+              type: string
+              description: code identifying the rate
+              example: AAA
+          currencyCode:
+              type: string
+              description: currency code of revenue amount indicated
+              example: USD
+          amount:
+              type: number
+              example: 105.55
+              description: rate amount 
+  Comment:
+      type: object
+      properties:
+          type:
+              type: string
+              description: type or source of comment
+              example: COMMISSION
+          comment:
+              type: string
+              description: comment text
+              example: 0
+  CommandProgressStatusDto:
+    type: object
+    title: Command process status
+    properties:
+      id:
+        type: string
+      entity:
+        type: string
+      action:
+        type: string
+      cancellationId:
+        type: string
+      reservationId:
+        type: string
+      profileId:
+        type: string
+      status:
+        type: string
+      message:
+        type: string
+      created:
+        type: string
+        format: date-time
+      completed:
+        type: string
+        format: date-time
+    example:
+      operationId: 24e03d4d-6c10-4a7e-bade-4d77e0a714b8
+      commandType: RESERVATION_CREATE
+      status: IN PROGRESS
+  Error:
+    title: Error
+    type: object
+    properties:
+      timestamp:
+        type: number
+      status:
+        type: integer
+      error:
+        type: string
+      exception:
+        type: string
+      message:
+        type: string
+      path:
+        type: string
+    required:
+      - timestamp
+      - status
+      - error
+      - message
+      - path
+    example:
+      timestamp: '2018-12-17T10:44:03.088+0000'
+      status: 400
+      error: Bad Request
+      exception: BadCredentialsException
+      message: 'Could not find user ''test'' or invalid password'
+      path: /api/v1/login
+responses:
+  NoCommandFound:
+    description: Command not found
+    schema:
+      $ref: '#/definitions/Error'
+    examples:
+      application/json:
+        timestamp: '2018-12-19T07:23:52.429+0000'
+        status: 400,
+        error: Bad Request
+        exception: CommandApiStatusDao$CommandNotFoundException
+        message: 'No command found by provided id: d70ce51b-8400-4f5b-aedb-278f599a04a.'
+        path: /api/v1/commands/channel-id/d70ce51b-8400-4f5b-aedb-278f599a04a
+  NoChannelFound:
+    description: Not correct channel for the operation
+    schema:
+      $ref: '#/definitions/Error'
+    examples:
+      application/json:
+        timestamp: '2018-12-19T07:22:53.485+0000'
+        status: 400
+        error: Bad Request
+        exception: IllegalStateException
+        message: 'Channel not valid for the organization.'
+        path: /api/v1/path
+  Unauthorized:
+    description: 'Authentication Failed: Token corrupted'
+    schema:
+      $ref: '#/definitions/Error'
+    examples:
+      application/json:
+        timestamp: '2018-12-19T07:25:09.718+0000'
+        status: 401
+        error: Unauthorized
+        message: 'Authentication Failed: Invalid token'
+        path: /api/v1/path
