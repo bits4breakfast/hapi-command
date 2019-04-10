@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**commandStatus**](CommandApi.md#commandStatus) | **GET** /commands/{id} | Command Status
 
 # **commandStatus**
-> \HapiCommand\Model\CommandProgressStatusDto commandStatus($id)
+> \HapiCommand\Model\CommandProgressStatus commandStatus($id)
 
 Command Status
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 

@@ -92,7 +92,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Address](docs/Model/Address.md)
- - [CommandProgressStatusDto](docs/Model/CommandProgressStatusDto.md)
+ - [CommandProgressStatus](docs/Model/CommandProgressStatus.md)
  - [Comment](docs/Model/Comment.md)
  - [Country](docs/Model/Country.md)
  - [Email](docs/Model/Email.md)

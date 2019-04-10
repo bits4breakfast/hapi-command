@@ -29,15 +29,11 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/CommandProgressStatusDto'
+            $ref: '#/definitions/CommandProgressStatus'
         '400':
-          description: NoChannelFound
-          schema:
-            $ref: '#/responses/NoChannelFound'
+          $ref: '#/responses/NoChannelFound'
         '401':
-          description: Unauthorized
-          schema:
-            $ref: '#/responses/Unauthorized'
+          $ref: '#/responses/Unauthorized'
       parameters:
         - in: body
           schema:
@@ -60,15 +56,11 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/CommandProgressStatusDto'
+            $ref: '#/definitions/CommandProgressStatus'
         '400':
-          description: NoChannelFound
-          schema:
-            $ref: '#/responses/NoChannelFound'
+          $ref: '#/responses/NoChannelFound'
         '401':
-          description: Unauthorized
-          schema:   
-            $ref: '#/responses/Unauthorized'
+          $ref: '#/responses/Unauthorized'
       parameters:
         - in: body
           schema:
@@ -92,15 +84,11 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/CommandProgressStatusDto'
+            $ref: '#/definitions/CommandProgressStatus'
         '400':
-          description: NoChannelFound
-          schema:
-            $ref: '#/responses/NoChannelFound'
+          $ref: '#/responses/NoChannelFound'
         '401':
-          description: Unauthorized
-          schema:
-            $ref: '#/responses/Unauthorized'
+          $ref: '#/responses/Unauthorized'
       parameters:
         - in: path
           name: id
@@ -133,15 +121,11 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/CommandProgressStatusDto'
+            $ref: '#/definitions/CommandProgressStatus'
         '400':
-          description: NoCommandFound
-          schema:
-            $ref: '#/responses/NoCommandFound'
+          $ref: '#/responses/NoCommandFound'
         '401':
-          description: Unauthorized
-          schema:
-            $ref: '#/responses/Unauthorized'
+          $ref: '#/responses/Unauthorized'
 definitions:
   TimeSpan:
         title: TimeSpan
@@ -455,7 +439,7 @@ definitions:
               type: string
               description: comment text
               example: 0
-  CommandProgressStatusDto:
+  CommandProgressStatus:
     type: object
     title: Command process status
     properties:

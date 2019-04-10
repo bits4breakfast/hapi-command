@@ -94,7 +94,7 @@ class CommandApi
 *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HapiCommand\Model\CommandProgressStatusDto
+     * @return \HapiCommand\Model\CommandProgressStatus
      */
     public function commandStatus($id)
     {
@@ -111,11 +111,11 @@ class CommandApi
 *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HapiCommand\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatus, HTTP status code, HTTP response headers (array of strings)
      */
     public function commandStatusWithHttpInfo($id)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->commandStatusRequest($id);
 
         try {
@@ -174,21 +174,21 @@ $responseBody = $response->getBody();
             switch ($e->getCode()) {
 case 200:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\HapiCommand\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 400:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\HapiCommand\Model\ResponsesNoCommandFound',
+                        '\HapiCommand\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
 case 401:$data = ObjectSerializer::deserialize(
                         $content,
-                        '\HapiCommand\Model\ResponsesUnauthorized',
+                        '\HapiCommand\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -230,7 +230,7 @@ case 401:$data = ObjectSerializer::deserialize(
      */
     public function commandStatusAsyncWithHttpInfo($id)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->commandStatusRequest($id);
 
         return $this->client

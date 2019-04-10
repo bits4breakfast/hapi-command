@@ -1,6 +1,6 @@
 <?php
 /**
- * CommandProgressStatusDto
+ * CommandProgressStatus
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \HapiCommand\ObjectSerializer;
 
 /**
- * CommandProgressStatusDto Class Doc Comment
+ * CommandProgressStatus Class Doc Comment
  *
  * @category Class
  * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CommandProgressStatusDto implements ModelInterface, ArrayAccess
+class CommandProgressStatus implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class CommandProgressStatusDto implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CommandProgressStatusDto';
+    protected static $swaggerModelName = 'CommandProgressStatus';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

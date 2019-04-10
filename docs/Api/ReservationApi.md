@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**updateReservation**](ReservationApi.md#updateReservation) | **PUT** /reservations | Update reservation
 
 # **cancelReservation**
-> \HapiCommand\Model\CommandProgressStatusDto cancelReservation($id, $body)
+> \HapiCommand\Model\CommandProgressStatus cancelReservation($id, $body)
 
 Cancel reservation
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createReservation**
-> \HapiCommand\Model\CommandProgressStatusDto createReservation($body)
+> \HapiCommand\Model\CommandProgressStatus createReservation($body)
 
 Create reservation
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateReservation**
-> \HapiCommand\Model\CommandProgressStatusDto updateReservation($body)
+> \HapiCommand\Model\CommandProgressStatus updateReservation($body)
 
 Update reservation
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 
