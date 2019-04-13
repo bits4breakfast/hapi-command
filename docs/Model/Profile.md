@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | reservation identifier | [optional] 
 **type** | **string** |  | [optional] 
-**name** | [**\HapiCommand\Model\Name**](Name.md) |  | [optional] 
+**name** | [**\HapiCommand\Model\Name**](Name.md) |  | 
 **date_of_birth** | **string** |  | [optional] 
 **emails** | [**\HapiCommand\Model\Email[]**](Email.md) |  | [optional] 
 **phones** | [**\HapiCommand\Model\Phone[]**](Phone.md) |  | [optional] 

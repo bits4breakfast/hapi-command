@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **channel_code** | **string** | code identifying source of reservation | [optional] 
 **source_code** | **string** | code identifying source of rate associated to stay | [optional] 
 **block_code** | **string** | group block code | [optional] 
+**room_count** | **int** | number of rooms associated to stay | [optional] 
 **payment_method** | **string** | payment method used in the reservation | [optional] 
 **rates** | [**\HapiCommand\Model\RoomRate[]**](RoomRate.md) |  | [optional] 
 **services** | [**\HapiCommand\Model\Service[]**](Service.md) |  | [optional] 

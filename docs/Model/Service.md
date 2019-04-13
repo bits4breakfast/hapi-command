@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 **id** | **string** | code that identifies service | [optional] 
 **type** | **string** | service or fixed charge. defaults to SERVICE if not indicated | [optional] 
 **price** | **float** | cost of service | [optional] 
+**currency_code** | **string** | currency code of price indicated | [optional] 
+**rate_code** | **string** | rate code of price indicated | [optional] 
 **cost_type** | **string** | how is the service or charge priced | [optional] 
 **quantity** | **int** | number of service or fixed charge items | [optional] 
 **dates** | [**\HapiCommand\Model\TimeSpan**](TimeSpan.md) |  | [optional] 

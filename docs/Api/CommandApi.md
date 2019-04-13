@@ -43,7 +43,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**](../Model/.md)| ID returned as the result of async operation |
+ **id** | **string**| ID returned as the result of async operation |
 
 ### Return type
 
