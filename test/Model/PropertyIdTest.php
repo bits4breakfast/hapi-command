@@ -1,6 +1,6 @@
 <?php
 /**
- * RoomRateTest
+ * PropertyIdTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace Swagger\Client;
 
 /**
- * RoomRateTest Class Doc Comment
+ * PropertyIdTest Class Doc Comment
  *
  * @category    Class
- * @description RoomRate
+ * @description Property id in HAPI system
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class RoomRateTest extends \PHPUnit_Framework_TestCase
+class PropertyIdTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,37 +69,30 @@ class RoomRateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "RoomRate"
+     * Test "PropertyId"
      */
-    public function testRoomRate()
+    public function testPropertyId()
     {
     }
 
     /**
-     * Test attribute "effective_dates"
+     * Test attribute "chain_code"
      */
-    public function testPropertyEffectiveDates()
+    public function testPropertyChainCode()
     {
     }
 
     /**
-     * Test attribute "rate_code"
+     * Test attribute "brand_code"
      */
-    public function testPropertyRateCode()
+    public function testPropertyBrandCode()
     {
     }
 
     /**
-     * Test attribute "currency_code"
+     * Test attribute "property_code"
      */
-    public function testPropertyCurrencyCode()
-    {
-    }
-
-    /**
-     * Test attribute "amount"
-     */
-    public function testPropertyAmount()
+    public function testPropertyPropertyCode()
     {
     }
 }

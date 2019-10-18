@@ -1,6 +1,6 @@
 <?php
 /**
- * StateProvince
+ * ReservationCancel
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \HapiCommand\ObjectSerializer;
 
 /**
- * StateProvince Class Doc Comment
+ * ReservationCancel Class Doc Comment
  *
  * @category Class
  * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class StateProvince implements ModelInterface, ArrayAccess
+class ReservationCancel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class StateProvince implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'StateProvince';
+    protected static $swaggerModelName = 'ReservationCancel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,9 @@ class StateProvince implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'code' => 'string',
-'name' => 'string'    ];
+        'property_id' => '\HapiCommand\Model\PropertyId',
+'cancellation_comment' => 'string',
+'cancelled_date' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +66,9 @@ class StateProvince implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'code' => null,
-'name' => null    ];
+        'property_id' => null,
+'cancellation_comment' => null,
+'cancelled_date' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +97,9 @@ class StateProvince implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-'name' => 'name'    ];
+        'property_id' => 'propertyId',
+'cancellation_comment' => 'cancellationComment',
+'cancelled_date' => 'cancelledDate'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +107,9 @@ class StateProvince implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-'name' => 'setName'    ];
+        'property_id' => 'setPropertyId',
+'cancellation_comment' => 'setCancellationComment',
+'cancelled_date' => 'setCancelledDate'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +117,9 @@ class StateProvince implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-'name' => 'getName'    ];
+        'property_id' => 'getPropertyId',
+'cancellation_comment' => 'getCancellationComment',
+'cancelled_date' => 'getCancelledDate'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +179,9 @@ class StateProvince implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['property_id'] = isset($data['property_id']) ? $data['property_id'] : null;
+        $this->container['cancellation_comment'] = isset($data['cancellation_comment']) ? $data['cancellation_comment'] : null;
+        $this->container['cancelled_date'] = isset($data['cancelled_date']) ? $data['cancelled_date'] : null;
     }
 
     /**
@@ -187,6 +193,9 @@ class StateProvince implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['property_id'] === null) {
+            $invalidProperties[] = "'property_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -203,49 +212,73 @@ class StateProvince implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets property_id
      *
-     * @return string
+     * @return \HapiCommand\Model\PropertyId
      */
-    public function getCode()
+    public function getPropertyId()
     {
-        return $this->container['code'];
+        return $this->container['property_id'];
     }
 
     /**
-     * Sets code
+     * Sets property_id
      *
-     * @param string $code code identifying state or province associated to address
+     * @param \HapiCommand\Model\PropertyId $property_id property_id
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setPropertyId($property_id)
     {
-        $this->container['code'] = $code;
+        $this->container['property_id'] = $property_id;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets cancellation_comment
      *
      * @return string
      */
-    public function getName()
+    public function getCancellationComment()
     {
-        return $this->container['name'];
+        return $this->container['cancellation_comment'];
     }
 
     /**
-     * Sets name
+     * Sets cancellation_comment
      *
-     * @param string $name name of state or province associated to address
+     * @param string $cancellation_comment reason for cancellation
      *
      * @return $this
      */
-    public function setName($name)
+    public function setCancellationComment($cancellation_comment)
     {
-        $this->container['name'] = $name;
+        $this->container['cancellation_comment'] = $cancellation_comment;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancelled_date
+     *
+     * @return string
+     */
+    public function getCancelledDate()
+    {
+        return $this->container['cancelled_date'];
+    }
+
+    /**
+     * Sets cancelled_date
+     *
+     * @param string $cancelled_date date of reservation cancellation, in YYYY-MM-DDThh:mm:ss.sss format
+     *
+     * @return $this
+     */
+    public function setCancelledDate($cancelled_date)
+    {
+        $this->container['cancelled_date'] = $cancelled_date;
 
         return $this;
     }
