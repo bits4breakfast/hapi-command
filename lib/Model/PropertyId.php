@@ -1,6 +1,6 @@
 <?php
 /**
- * StateProvince
+ * PropertyId
  *
  * PHP version 5
  *
@@ -32,14 +32,15 @@ use \ArrayAccess;
 use \HapiCommand\ObjectSerializer;
 
 /**
- * StateProvince Class Doc Comment
+ * PropertyId Class Doc Comment
  *
  * @category Class
+ * @description Property id in HAPI system
  * @package  HapiCommand
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class StateProvince implements ModelInterface, ArrayAccess
+class PropertyId implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +49,7 @@ class StateProvince implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'StateProvince';
+    protected static $swaggerModelName = 'PropertyId';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +57,9 @@ class StateProvince implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'code' => 'string',
-'name' => 'string'    ];
+        'chain_code' => 'string',
+'brand_code' => 'string',
+'property_code' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +67,9 @@ class StateProvince implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'code' => null,
-'name' => null    ];
+        'chain_code' => null,
+'brand_code' => null,
+'property_code' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +98,9 @@ class StateProvince implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-'name' => 'name'    ];
+        'chain_code' => 'chainCode',
+'brand_code' => 'brandCode',
+'property_code' => 'propertyCode'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +108,9 @@ class StateProvince implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-'name' => 'setName'    ];
+        'chain_code' => 'setChainCode',
+'brand_code' => 'setBrandCode',
+'property_code' => 'setPropertyCode'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +118,9 @@ class StateProvince implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-'name' => 'getName'    ];
+        'chain_code' => 'getChainCode',
+'brand_code' => 'getBrandCode',
+'property_code' => 'getPropertyCode'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +180,9 @@ class StateProvince implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['chain_code'] = isset($data['chain_code']) ? $data['chain_code'] : null;
+        $this->container['brand_code'] = isset($data['brand_code']) ? $data['brand_code'] : null;
+        $this->container['property_code'] = isset($data['property_code']) ? $data['property_code'] : null;
     }
 
     /**
@@ -187,6 +194,12 @@ class StateProvince implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['chain_code'] === null) {
+            $invalidProperties[] = "'chain_code' can't be null";
+        }
+        if ($this->container['property_code'] === null) {
+            $invalidProperties[] = "'property_code' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -203,49 +216,73 @@ class StateProvince implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets chain_code
      *
      * @return string
      */
-    public function getCode()
+    public function getChainCode()
     {
-        return $this->container['code'];
+        return $this->container['chain_code'];
     }
 
     /**
-     * Sets code
+     * Sets chain_code
      *
-     * @param string $code code identifying state or province associated to address
+     * @param string $chain_code chain_code
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setChainCode($chain_code)
     {
-        $this->container['code'] = $code;
+        $this->container['chain_code'] = $chain_code;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets brand_code
      *
      * @return string
      */
-    public function getName()
+    public function getBrandCode()
     {
-        return $this->container['name'];
+        return $this->container['brand_code'];
     }
 
     /**
-     * Sets name
+     * Sets brand_code
      *
-     * @param string $name name of state or province associated to address
+     * @param string $brand_code brand_code
      *
      * @return $this
      */
-    public function setName($name)
+    public function setBrandCode($brand_code)
     {
-        $this->container['name'] = $name;
+        $this->container['brand_code'] = $brand_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets property_code
+     *
+     * @return string
+     */
+    public function getPropertyCode()
+    {
+        return $this->container['property_code'];
+    }
+
+    /**
+     * Sets property_code
+     *
+     * @param string $property_code property_code
+     *
+     * @return $this
+     */
+    public function setPropertyCode($property_code)
+    {
+        $this->container['property_code'] = $property_code;
 
         return $this;
     }

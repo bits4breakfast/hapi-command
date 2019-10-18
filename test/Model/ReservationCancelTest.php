@@ -1,6 +1,6 @@
 <?php
 /**
- * RoomRateTest
+ * ReservationCancelTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace Swagger\Client;
 
 /**
- * RoomRateTest Class Doc Comment
+ * ReservationCancelTest Class Doc Comment
  *
  * @category    Class
- * @description RoomRate
+ * @description ReservationCancel
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class RoomRateTest extends \PHPUnit_Framework_TestCase
+class ReservationCancelTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,37 +69,30 @@ class RoomRateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "RoomRate"
+     * Test "ReservationCancel"
      */
-    public function testRoomRate()
+    public function testReservationCancel()
     {
     }
 
     /**
-     * Test attribute "effective_dates"
+     * Test attribute "property_id"
      */
-    public function testPropertyEffectiveDates()
+    public function testPropertyPropertyId()
     {
     }
 
     /**
-     * Test attribute "rate_code"
+     * Test attribute "cancellation_comment"
      */
-    public function testPropertyRateCode()
+    public function testPropertyCancellationComment()
     {
     }
 
     /**
-     * Test attribute "currency_code"
+     * Test attribute "cancelled_date"
      */
-    public function testPropertyCurrencyCode()
-    {
-    }
-
-    /**
-     * Test attribute "amount"
-     */
-    public function testPropertyAmount()
+    public function testPropertyCancelledDate()
     {
     }
 }

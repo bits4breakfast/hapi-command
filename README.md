@@ -101,7 +101,9 @@ Class | Method | HTTP request | Description
  - [Name](docs/Model/Name.md)
  - [Phone](docs/Model/Phone.md)
  - [Profile](docs/Model/Profile.md)
+ - [PropertyId](docs/Model/PropertyId.md)
  - [Reservation](docs/Model/Reservation.md)
+ - [ReservationCancel](docs/Model/ReservationCancel.md)
  - [RoomRate](docs/Model/RoomRate.md)
  - [RoomStay](docs/Model/RoomStay.md)
  - [Service](docs/Model/Service.md)
@@ -119,5 +121,6 @@ Class | Method | HTTP request | Description
 
 
 ## Author
+
 
 

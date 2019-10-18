@@ -1,700 +1,773 @@
-openapi: 3.0.0
+---
+openapi: "3.0.0"
 info:
-  version: v1-oas3
-  title: HAPI Command API
-  description: API for creating/updating/canceling objects in PMS
+  version: "v1-oas3"
+  title: "HAPI Command API"
+  description: "API for creating/updating/canceling objects in PMS"
 paths:
   /reservations:
     post:
-      operationId: CreateReservation
-      summary: Create reservation
-      description: Create reservation operation in external system
+      operationId: "CreateReservation"
+      summary: "Create reservation"
+      description: "Create reservation operation in external system"
       tags:
-        - Reservation
+      - "Reservation"
       security:
-        - Bearer: []
+      - Bearer: []
       responses:
-        '200':
-          description: Success
+        200:
+          description: "Success"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommandProgressStatus'
-        '400':
-          description: NoChannelFound
+                $ref: "#/components/schemas/CommandProgressStatus"
+        400:
+          description: "NoChannelFound"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
-                timestamp: '2018-12-17T10:44:03.088+0000'
+                timestamp: "2018-12-17T10:44:03.088+0000"
                 status: 400
-                error: BadRequest
-                exception: java.lang.IllegalStateException
-                message: 'Channel not valid for the organization'
-                path: /api/v1/hapi-vendors/reservations
-                
-        '401':
-          description: Unauthorized
+                error: "BadRequest"
+                exception: "java.lang.IllegalStateException"
+                message: "Channel not valid for the organization"
+                path: "/api/v1/hapi-vendors/reservations"
+        401:
+          description: "Unauthorized"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
-                timestamp: '2018-12-17T10:44:03.088+0000'
+                timestamp: "2018-12-17T10:44:03.088+0000"
                 status: 401
-                error: Unauthorized
-                message: 'Authentication Failed: Invalid token'
-                path: /api/v1/hapi-vendor/reservations
+                error: "Unauthorized"
+                message: "Authentication Failed: Invalid token"
+                path: "/api/v1/hapi-vendor/reservations"
       requestBody:
-        $ref: '#/components/requestBodies/ReservationCreate'
+        $ref: "#/components/requestBodies/ReservationCreate"
     put:
-      operationId: UpdateReservation
-      summary: Update reservation
-      description: Update reservation operation in external system
+      operationId: "UpdateReservation"
+      summary: "Update reservation"
+      description: "Update reservation operation in external system"
       tags:
-        - Reservation
+      - "Reservation"
       security:
-        - Bearer: []
+      - Bearer: []
       responses:
-        '200':
-          description: Success
+        200:
+          description: "Success"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommandProgressStatus'
-        '400':
-          description: NoChannelFound
+                $ref: "#/components/schemas/CommandProgressStatus"
+        400:
+          description: "NoChannelFound"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
-                timestamp: '2018-12-17T10:44:03.088+0000'
+                timestamp: "2018-12-17T10:44:03.088+0000"
                 status: 400
-                error: BadRequest
-                exception: java.lang.IllegalStateException
-                message: 'Channel not valid for the organization'
-                path: /api/v1/hapi-vendors/reservations
-                
-        '401':
-          description: Unauthorized
+                error: "BadRequest"
+                exception: "java.lang.IllegalStateException"
+                message: "Channel not valid for the organization"
+                path: "/api/v1/hapi-vendors/reservations"
+        401:
+          description: "Unauthorized"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
-                timestamp: '2018-12-17T10:44:03.088+0000'
+                timestamp: "2018-12-17T10:44:03.088+0000"
                 status: 401
-                error: Unauthorized
-                message: 'Authentication Failed: Invalid token'
-                path: /api/v1/hapi-vendor/reservations
+                error: "Unauthorized"
+                message: "Authentication Failed: Invalid token"
+                path: "/api/v1/hapi-vendor/reservations"
       requestBody:
-        $ref: '#/components/requestBodies/ReservationUpdate'
-  '/reservations/{id}/cancel':
+        $ref: "#/components/requestBodies/ReservationUpdate"
+  /reservations/{id}/cancel:
     post:
-      operationId: CancelReservation
-      summary: Cancel reservation
-      description: >-
-        Cancel reservation operation in external system. 
-        A cancellation comment and cancellation date can be sent in the body of the request.
+      operationId: "CancelReservation"
+      summary: "Cancel reservation"
+      description: "Cancel reservation operation in external system.  A cancellation\
+        \ comment and cancellation date can be sent in the body of the request."
       tags:
-        - Reservation
+      - "Reservation"
       security:
-        - Bearer: []
+      - Bearer: []
       responses:
-        '200':
-          description: Success
+        200:
+          description: "Success"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommandProgressStatus'
-        '400':
-          description: NoChannelFound
+                $ref: "#/components/schemas/CommandProgressStatus"
+        400:
+          description: "NoChannelFound"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
-                timestamp: '2018-12-17T10:44:03.088+0000'
+                timestamp: "2018-12-17T10:44:03.088+0000"
                 status: 400
-                error: BadRequest
-                exception: java.lang.IllegalStateException
-                message: 'Channel not valid for the organization'
-                path: /api/v1/hapi-vendors/reservations
-        '401':
-          description: Unauthorized
+                error: "BadRequest"
+                exception: "java.lang.IllegalStateException"
+                message: "Channel not valid for the organization"
+                path: "/api/v1/hapi-vendors/reservations"
+        401:
+          description: "Unauthorized"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
-                timestamp: '2018-12-17T10:44:03.088+0000'
+                timestamp: "2018-12-17T10:44:03.088+0000"
                 status: 401
-                error: Unauthorized
-                message: 'Authentication Failed: Invalid token'
-                path: /api/v1/hapi-vendor/reservations
+                error: "Unauthorized"
+                message: "Authentication Failed: Invalid token"
+                path: "/api/v1/hapi-vendor/reservations"
       parameters:
-        - in: path
-          name: id
-          description: Reservation id for the operation
-          required: true
-          schema:
-            type: string
+      - in: "path"
+        name: "id"
+        description: "Reservation id for the operation"
+        required: true
+        schema:
+          type: "string"
       requestBody:
-            $ref: '#/components/requestBodies/ReservationCancel'
-  '/commands/{id}':
+        $ref: "#/components/requestBodies/ReservationCancel"
+  /commands/{id}:
     get:
-      operationId: commandStatus
-      summary: Command Status
-      description: Return command status of the running async operation
+      operationId: "commandStatus"
+      summary: "Command Status"
+      description: "Return command status of the running async operation"
       tags:
-        - Command
+      - "Command"
       security:
-        - Bearer: []
+      - Bearer: []
       parameters:
-        - in: path
-          name: id
-          description: ID returned as the result of async operation
-          required: true
-          schema:
-            type: string
+      - in: "path"
+        name: "id"
+        description: "ID returned as the result of async operation"
+        required: true
+        schema:
+          type: "string"
       responses:
-        '200':
-          description: Success
+        200:
+          description: "Success"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CommandProgressStatus'
-        '400':
-          description: NoChannelFound
+                $ref: "#/components/schemas/CommandProgressStatus"
+        400:
+          description: "NoChannelFound"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
-                timestamp: '2018-12-17T10:44:03.088+0000'
+                timestamp: "2018-12-17T10:44:03.088+0000"
                 status: 400
-                error: BadRequest
-                exception: java.lang.IllegalStateException
-                message: 'Channel not valid for the organization'
-                path: /api/v1/hapi-vendors/reservations
-                
-        '401':
-          description: Unauthorized
+                error: "BadRequest"
+                exception: "java.lang.IllegalStateException"
+                message: "Channel not valid for the organization"
+                path: "/api/v1/hapi-vendors/reservations"
+        401:
+          description: "Unauthorized"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
-                timestamp: '2018-12-17T10:44:03.088+0000'
+                timestamp: "2018-12-17T10:44:03.088+0000"
                 status: 401
-                error: Unauthorized
-                message: 'Authentication Failed: Invalid token'
-                path: /api/v1/hapi-vendor/reservations
+                error: "Unauthorized"
+                message: "Authentication Failed: Invalid token"
+                path: "/api/v1/hapi-vendor/reservations"
 servers:
-  - url: 'https://hapicloud-dev.apigee.net/api'
+- url: "https://hapicloud-dev.apigee.net/api"
 components:
   requestBodies:
     ReservationCreate:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Reservation'
+            $ref: "#/components/schemas/Reservation"
           example:
-              bookingConfirmationId: ABCD123
-              arrivalDate: '2019-01-01'
-              departureDate: '2019-01-03'
-              adults: 1
-              children: 0
-              guests: 
-                - profile:
-                    name:
-                      first: Christoper
-                      last: Guest
-              roomStays:
-                - rates:
-                    - effectiveDates:
-                        start: '2019-01-01'
-                        end: '2019-01-03'
-                      amount: 150
-                      currencyCode: USD
-                  roomCount: 1
-                  roomType: DBL
-              services:
-                - id: 1500
-                  type: FIXED_CHARGE
-                  price: 35.75
-                  quantity: 1
-                  costType: PER_NIGHT
-                  dates:
-                    start: '2019-01-01'
-                    end: '2019-01-03'
+            propertyId:
+              propertyCode: "FSDH"
+              chainCode: "HAPI"
+            bookingConfirmationId: "ABCD123"
+            arrivalDate: "2019-01-01"
+            departureDate: "2019-01-03"
+            adults: 1
+            children: 0
+            guests:
+            - profile:
+                name:
+                  first: "Christoper"
+                  last: "Guest"
+            roomStays:
+            - rates:
+              - effectiveDates:
+                  start: "2019-01-01"
+                  end: "2019-01-03"
+                amount: 150
+                currencyCode: "USD"
+              roomCount: 1
+              roomType: "DBL"
+            services:
+            - id: 1500
+              type: "FIXED_CHARGE"
+              price: 35.75
+              quantity: 1
+              costType: "PER_NIGHT"
+              dates:
+                start: "2019-01-01"
+                end: "2019-01-03"
     ReservationUpdate:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Reservation'
+            $ref: "#/components/schemas/Reservation"
           example:
-              id: 164650
-              arrivalDate: '2019-01-01'
-              departureDate: '2019-01-03'
-              adults: 1
-              guests: 
-                - profile:
-                    id: 152210
-                    name:
-                      first: Christoper
-                      last: Guest
-              roomStays:
-                - rates:
-                    - effectiveDates:
-                        start: '2019-01-01'
-                        end: '2019-01-03'
-                      amount: 175
-                      currencyCode: USD
-                  roomCount: 1
-                  roomType: DLK
-              services:
-                - id: 1500
-                  type: FIXED_CHARGE
-                  price: 35.75
-                  quantity: 1
-                  costType: PER_NIGHT
-                  dates:
-                    start: '2019-01-01'
-                    end: '2019-01-03'
+            propertyId:
+              propertyCode: "FSDH"
+              chainCode: "HAPI"
+            id: 164650
+            arrivalDate: "2019-01-01"
+            departureDate: "2019-01-03"
+            adults: 1
+            guests:
+            - profile:
+                id: 152210
+                name:
+                  first: "Christoper"
+                  last: "Guest"
+            roomStays:
+            - rates:
+              - effectiveDates:
+                  start: "2019-01-01"
+                  end: "2019-01-03"
+                amount: 175
+                currencyCode: "USD"
+              roomCount: 1
+              roomType: "DLK"
+            services:
+            - id: 1500
+              type: "FIXED_CHARGE"
+              price: 35.75
+              quantity: 1
+              costType: "PER_NIGHT"
+              dates:
+                start: "2019-01-01"
+                end: "2019-01-03"
       required: true
     ReservationCancel:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Reservation'
+            $ref: "#/components/schemas/ReservationCancel"
           example:
-            cancellationComment: guest cancelled trip
-            cancelledDate: '2018-12-27'
+            cancellationComment: "guest cancelled trip"
+            cancelledDate: "2018-12-27"
       required: false
   securitySchemes:
     Bearer:
-      type: apiKey
-      name: Authorization
-      in: header
+      type: "apiKey"
+      name: "Authorization"
+      in: "header"
   schemas:
     TimeSpan:
-      title: TimeSpan
-      type: object
-      description: Duration of event
+      title: "TimeSpan"
+      type: "object"
+      description: "Duration of event"
       required:
-        - start
-        - end
+      - "start"
+      - "end"
       properties:
         start:
-          type: string
-          description: 'begin date of span, in YYYY-MM-DD format'
-          example: '2018-12-01'
+          type: "string"
+          description: "begin date of span, in YYYY-MM-DD format"
+          example: "2018-12-01"
         end:
-          type: string
-          description: 'end date of span, in YYYY-MM-DD format'
-          example: '2018-12-03'
-    Reservation:
-      title: Reservation
-      type: object
+          type: "string"
+          description: "end date of span, in YYYY-MM-DD format"
+          example: "2018-12-03"
+    PropertyId:
+      title: "PropertyId"
+      type: "object"
+      description: "Property id in HAPI system"
+      required:
+      - "chainCode"
+      - "propertyCode"
       properties:
+        chainCode:
+          type: "string"
+          example: "HIL"
+        brandCode:
+          type: "string"
+          example: "ABVI"
+        propertyCode:
+          type: "string"
+          example: "FSDH"
+    Reservation:
+      title: "Reservation"
+      type: "object"
+      required:
+      - "propertyId"
+      - "bookingConfirmationId"
+      - "arrivalDate"
+      - "departureDate"
+      - "adults"
+      - "children"
+      - "guests"
+      - "roomStays"
+      properties:
+        propertyId:
+          $ref: "#/components/schemas/PropertyId"
         id:
-          type: string
-          description: reservation identifier and object key
+          type: "string"
+          description: "reservation identifier and object key"
           example: 542154
         bookingConfirmationId:
-          type: string
-          description: unique confirmation id within given hotel
-          example: L7RR1A
+          type: "string"
+          description: "unique confirmation id within given hotel"
+          example: "L7RR1A"
         arrivalDate:
-          type: string
-          description: 'check-in date, in YYYY-MM-DD format'
-          example: '2018-08-23'
+          type: "string"
+          description: "check-in date, in YYYY-MM-DD format"
+          example: "2018-08-23"
         arrivalTime:
-          type: string
-          description: estimated check-in time
-          example: '5:00PM'
+          type: "string"
+          description: "estimated check-in time"
+          example: "5:00PM"
         departureDate:
-          type: string
-          description: 'check-out date, in YYYY-MM-DD format'
-          example: '2018-08-25'
+          type: "string"
+          description: "check-out date, in YYYY-MM-DD format"
+          example: "2018-08-25"
         creator:
-          type: string
-          description: user or interface who created reservation
-          example: AFESSE
+          type: "string"
+          description: "user or interface who created reservation"
+          example: "AFESSE"
         cancellationNumber:
-          type: string
-          description: >-
-            cancellation number for reservation. may be supplied externally or
-            returned from pms
-          example: CXL12345
+          type: "string"
+          description: "cancellation number for reservation. may be supplied externally\
+            \ or returned from pms"
+          example: "CXL12345"
         cancelledDate:
-          type: string
-          description: >-
-            date of reservation cancellation, in YYYY-MM-DDThh:mm:ss.sss format
-          example: '2019-03-04T12:00:00.000'         
+          type: "string"
+          description: "date of reservation cancellation, in YYYY-MM-DDThh:mm:ss.sss\
+            \ format"
+          example: "2019-03-04T12:00:00.000"
         cancellationComment:
-          type: string
-          description: reason for reservation cancellation
-          example: guest cancelled trip
+          type: "string"
+          description: "reason for reservation cancellation"
+          example: "guest cancelled trip"
         adults:
-          type: integer
+          type: "integer"
           example: 2
         children:
-          type: integer
+          type: "integer"
           example: 1
         status:
-          type: string
-          description: current status of reservation
-          example: RESERVED
-          enum: [REQUESTED,RESERVED,IN_HOUSE,CANCELLED,CHECKED_OUT,NO_SHOW,WAIT_LIST,UNKNOWN]
+          type: "string"
+          description: "current status of reservation"
+          example: "RESERVED"
+          enum:
+          - "REQUESTED"
+          - "RESERVED"
+          - "IN_HOUSE"
+          - "CANCELLED"
+          - "CHECKED_OUT"
+          - "NO_SHOW"
+          - "WAIT_LIST"
+          - "UNKNOWN"
         guests:
-          type: array
-          description: guest profiles associated to reservation
+          type: "array"
+          description: "guest profiles associated to reservation"
           items:
-            $ref: '#/components/schemas/Guest'
+            $ref: "#/components/schemas/Guest"
         profiles:
-          type: array
-          description: non-guest profiles associated to reservation
+          type: "array"
+          description: "non-guest profiles associated to reservation"
           items:
-            $ref: '#/components/schemas/Profile'
+            $ref: "#/components/schemas/Profile"
         roomStays:
-          type: array
-          description: room stay information associated to reservation
+          type: "array"
+          description: "room stay information associated to reservation"
           items:
-            $ref: '#/components/schemas/RoomStay'
+            $ref: "#/components/schemas/RoomStay"
         comments:
-          type: array
+          type: "array"
           items:
-            $ref: '#/components/schemas/Comment'
+            $ref: "#/components/schemas/Comment"
     RoomStay:
-      title: RoomStay
-      type: object
+      title: "RoomStay"
+      type: "object"
+      required:
+      - "roomType"
+      - "roomCount"
+      - "rates"
       properties:
         roomNumber:
-          type: string
-          description: room number for stay
-          example: '122'
+          type: "string"
+          description: "room number for stay"
+          example: "122"
         roomType:
-          type: string
-          description: code identifying the type of room associated to stay
-          example: KING
+          type: "string"
+          description: "code identifying the type of room associated to stay"
+          example: "KING"
         rateCode:
-          type: string
-          description: code identifying rate for stay
-          example: AAA
+          type: "string"
+          description: "code identifying rate for stay"
+          example: "AAA"
         marketCode:
-          type: string
-          description: code identifying marketing type for rate
-          example: F
+          type: "string"
+          description: "code identifying marketing type for rate"
+          example: "F"
         channelCode:
-          type: string
-          description: code identifying source of reservation
-          example: DM
+          type: "string"
+          description: "code identifying source of reservation"
+          example: "DM"
         sourceCode:
-          type: string
-          description: code identifying source of rate associated to stay
-          example: SRC
+          type: "string"
+          description: "code identifying source of rate associated to stay"
+          example: "SRC"
         blockCode:
-          type: string
-          description: group block code
-          example: GROUPBLOCK
+          type: "string"
+          description: "group block code"
+          example: "GROUPBLOCK"
         roomCount:
-          type: integer
-          description: number of rooms associated to stay
+          type: "integer"
+          description: "number of rooms associated to stay"
           example: 1
         paymentMethod:
-          type: string
-          description: payment method used in the reservation
-          example: CA
+          type: "string"
+          description: "payment method used in the reservation"
+          example: "CA"
         rates:
-          type: array
+          type: "array"
           items:
-            $ref: '#/components/schemas/RoomRate'
+            $ref: "#/components/schemas/RoomRate"
         services:
-          type: array
+          type: "array"
           items:
-            $ref: '#/components/schemas/Service'
+            $ref: "#/components/schemas/Service"
     Guest:
-      title: Guest
-      type: object
-      description: profile info for guest(s)
+      title: "Guest"
+      type: "object"
+      description: "profile info for guest(s)"
       required:
-        - profile
+      - "profile"
       properties:
         profile:
-          $ref: '#/components/schemas/Profile'
+          $ref: "#/components/schemas/Profile"
         IsPrimary:
-          type: boolean
-          description: designates if primary guest on reservation
+          type: "boolean"
+          description: "designates if primary guest on reservation"
           example: true
     Profile:
-      title: Profile
-      type: object
+      title: "Profile"
+      type: "object"
       required:
-        - name
+      - "name"
       properties:
         id:
-          type: string
-          description: reservation identifier
+          type: "string"
+          description: "reservation identifier"
           example: 542154
         type:
-          type: string
-          example: PERSON
+          type: "string"
+          example: "PERSON"
         name:
-          $ref: '#/components/schemas/Name'
+          $ref: "#/components/schemas/Name"
         dateOfBirth:
-          type: string
-          example: '1979-10-31'
+          type: "string"
+          example: "1979-10-31"
         emails:
-          type: array
+          type: "array"
           items:
-            $ref: '#/components/schemas/Email'
+            $ref: "#/components/schemas/Email"
         phones:
-          type: array
+          type: "array"
           items:
-            $ref: '#/components/schemas/Phone'
+            $ref: "#/components/schemas/Phone"
         addresses:
-          type: array
+          type: "array"
           items:
-            $ref: '#/components/schemas/Address'
+            $ref: "#/components/schemas/Address"
     Address:
-      title: Address
-      type: object
+      title: "Address"
+      type: "object"
       properties:
         type:
-          type: string
-          description: address type
-          example: BUSINESS
+          type: "string"
+          description: "address type"
+          example: "BUSINESS"
         primary:
-          type: boolean
-          description: primary address flag
+          type: "boolean"
+          description: "primary address flag"
           example: true
         address1:
-          type: string
-          description: first line of address. typically contains street info
-          example: 1234 Park Ave
+          type: "string"
+          description: "first line of address. typically contains street info"
+          example: "1234 Park Ave"
         address2:
-          type: string
-          description: second line of address. typically contains apartment info
-          example: APT 505
+          type: "string"
+          description: "second line of address. typically contains apartment info"
+          example: "APT 505"
         address3:
-          type: string
-          description: third line of address
+          type: "string"
+          description: "third line of address"
         city:
-          type: string
-          description: city associated to address
-          example: Miami
+          type: "string"
+          description: "city associated to address"
+          example: "Miami"
         stateProvince:
-          $ref: '#/components/schemas/StateProvince'
+          $ref: "#/components/schemas/StateProvince"
         postalCode:
-          type: string
-          description: postal or zip code associated to address
-          example: '33133'
+          type: "string"
+          description: "postal or zip code associated to address"
+          example: "33133"
         country:
-          $ref: '#/components/schemas/Country'
+          $ref: "#/components/schemas/Country"
     StateProvince:
-      title: StateProvince
-      type: object
+      title: "StateProvince"
+      type: "object"
       properties:
         code:
-          type: string
-          description: code identifying state or province associated to address
-          example: FL
+          type: "string"
+          description: "code identifying state or province associated to address"
+          example: "FL"
         name:
-          type: string
-          description: name of state or province associated to address
-          example: Florida
+          type: "string"
+          description: "name of state or province associated to address"
+          example: "Florida"
     Country:
-      title: Country
-      type: object
+      title: "Country"
+      type: "object"
       properties:
         code:
-          type: string
-          example: US
+          type: "string"
+          example: "US"
         name:
-          type: string
-          example: United States
+          type: "string"
+          example: "United States"
     Phone:
-      title: Phone
-      type: object
-      properties:
-        type:
-          type: string
-          example: MOBILE
-        number:
-          type: string
-          example: 555-555-1212
-    Email:
-      title: Email
-      type: object
-      properties:
-        type:
-          type: string
-          example: PRIVATE
-        address:
-          type: string
-          example: cguest@email.com
-    Name:
-      title: Name
-      type: object
-      description: name of profile holder
+      title: "Phone"
+      type: "object"
       required:
-        - first
-        - last
+      - "type"
+      - "number"
+      properties:
+        type:
+          type: "string"
+          example: "MOBILE"
+        number:
+          type: "string"
+          example: "555-555-1212"
+    Email:
+      title: "Email"
+      type: "object"
+      required:
+      - "type"
+      - "address"
+      properties:
+        type:
+          type: "string"
+          example: "PRIVATE"
+        address:
+          type: "string"
+          example: "cguest@email.com"
+    Name:
+      title: "Name"
+      type: "object"
+      description: "name of profile holder"
+      required:
+      - "last"
       properties:
         salutation:
-          type: string
-          description: salutation for guest
-          example: Mr.
+          type: "string"
+          description: "salutation for guest"
+          example: "Mr."
         first:
-          type: string
-          description: first name
-          example: Christopher
+          type: "string"
+          description: "first name"
+          example: "Christopher"
         middle:
-          type: string
-          description: middle name or initial
-          example: M
+          type: "string"
+          description: "middle name or initial"
+          example: "M"
         last:
-          type: string
-          description: last name
-          example: Guest
+          type: "string"
+          description: "last name"
+          example: "Guest"
     Service:
-      title: Service
-      type: object
-      description: service or fixed charge related to reservation
+      title: "Service"
+      type: "object"
+      description: "service or fixed charge related to reservation"
+      required:
+      - "id"
+      - "type"
+      - "price"
+      - "dates"
+      - "quantity"
       properties:
         id:
-          type: string
-          description: code that identifies service
-          example: '1500'
+          type: "string"
+          description: "code that identifies service"
+          example: "1500"
         type:
-          type: string
-          description: service or fixed charge. defaults to SERVICE if not indicated
-          example: FIXED_CHARGE
+          type: "string"
+          description: "service or fixed charge. defaults to SERVICE if not indicated"
+          example: "FIXED_CHARGE"
           enum:
-            - SERVICE
-            - FIXED_CHARGE
+          - "SERVICE"
+          - "FIXED_CHARGE"
         price:
-          type: number
+          type: "number"
           example: 45
-          description: cost of service
+          description: "cost of service"
         currencyCode:
-          type: string
-          example: USD
-          description: currency code of price indicated
+          type: "string"
+          example: "USD"
+          description: "currency code of price indicated"
         rateCode:
-          type: string
-          description: rate code of price indicated
+          type: "string"
+          description: "rate code of price indicated"
         costType:
-          type: string
-          description: how is the service or charge priced
-          example: PER_STAY
+          type: "string"
+          description: "how is the service or charge priced"
+          example: "PER_STAY"
           enum:
-            - PER_STAY
-            - PER_NIGHT
-            - PER_WEEK
-            - PER_PERSON_PER_NIGHT
+          - "PER_STAY"
+          - "PER_NIGHT"
+          - "PER_WEEK"
+          - "PER_PERSON_PER_NIGHT"
         quantity:
-          type: integer
-          description: number of service or fixed charge items
+          type: "integer"
+          description: "number of service or fixed charge items"
           example: 1
         dates:
-          $ref: '#/components/schemas/TimeSpan'
+          $ref: "#/components/schemas/TimeSpan"
         comment:
-          type: string
-          description: Fixed charge additional information
-          example: Upsell charge
+          type: "string"
+          description: "Fixed charge additional information"
+          example: "Upsell charge"
+        totalAmount:
+          type: "number"
+          description: "Total cost of service"
+          example: 90
     RoomRate:
-      title: RoomRate
-      type: object
+      title: "RoomRate"
+      type: "object"
       required:
-        - effectiveDates
-        - amount
-        - rateCode
+      - "effectiveDates"
+      - "amount"
+      - "rateCode"
       properties:
         effectiveDates:
-          $ref: '#/components/schemas/TimeSpan'
+          $ref: "#/components/schemas/TimeSpan"
         rateCode:
-          type: string
-          description: code identifying the rate
-          example: AAA
+          type: "string"
+          description: "code identifying the rate"
+          example: "AAA"
         currencyCode:
-          type: string
-          description: currency code of revenue amount indicated
-          example: USD
+          type: "string"
+          description: "currency code of revenue amount indicated"
+          example: "USD"
         amount:
-          type: number
+          type: "number"
           example: 105.55
-          description: rate amount
+          description: "rate amount"
     Comment:
-      type: object
+      type: "object"
       properties:
         type:
-          type: string
-          description: type or source of comment
-          example: COMMISSION
+          type: "string"
+          description: "type or source of comment"
+          example: "COMMISSION"
         comment:
-          type: string
-          description: comment text
-          example: test comment
+          type: "string"
+          description: "comment text"
+          example: "test comment"
+    ReservationCancel:
+      type: "object"
+      properties:
+        propertyId:
+          $ref: "#/components/schemas/PropertyId"
+        cancellationComment:
+          type: "string"
+          description: "reason for cancellation"
+          example: "walked guest due to overbooking"
+        cancelledDate:
+          type: "string"
+          description: "date of reservation cancellation, in YYYY-MM-DDThh:mm:ss.sss\
+            \ format"
+          example: "2019-03-04T12:00:00.000"
+      required:
+      - "propertyId"
     CommandProgressStatus:
-      type: object
-      title: Command process status
+      type: "object"
+      title: "Command process status"
       properties:
         id:
-          type: string
+          type: "string"
         entity:
-          type: string
+          type: "string"
         action:
-          type: string
+          type: "string"
         cancellationId:
-          type: string
+          type: "string"
         reservationId:
-          type: string
+          type: "string"
         profileId:
-          type: string
+          type: "string"
         status:
-          type: string
+          type: "string"
         message:
-          type: string
+          type: "string"
         created:
-          type: string
-          format: date-time
+          type: "string"
+          format: "date-time"
         completed:
-          type: string
-          format: date-time
+          type: "string"
+          format: "date-time"
       example:
-        operationId: 24e03d4d-6c10-4a7e-bade-4d77e0a714b8
-        commandType: RESERVATION_CREATE
-        status: IN PROGRESS
+        operationId: "24e03d4d-6c10-4a7e-bade-4d77e0a714b8"
+        commandType: "RESERVATION_CREATE"
+        status: "IN PROGRESS"
     Error:
-      title: Error
-      type: object
+      title: "Error"
+      type: "object"
       properties:
         timestamp:
-          type: number
+          type: "string"
         status:
-          type: integer
+          type: "integer"
         error:
-          type: string
+          type: "string"
         exception:
-          type: string
+          type: "string"
         message:
-          type: string
+          type: "string"
         path:
-          type: string
+          type: "string"
       required:
-        - timestamp
-        - status
-        - error
-        - message
-        - path
+      - "timestamp"
+      - "status"
+      - "error"
+      - "message"
+      - "path"
       example:
-        timestamp: '2018-12-17T10:44:03.088+0000'
+        timestamp: "2018-12-17T10:44:03.088+0000"
         status: 401
-        error: Unauthorized
-        message: 'Authentication Failed: Invalid token'
-        path: /api/v1/hapi-vendor/reservations
+        error: "Unauthorized"
+        message: "Authentication Failed: Invalid token"
+        path: "/api/v1/hapi-vendor/reservations"

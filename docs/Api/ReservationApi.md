@@ -4,9 +4,9 @@ All URIs are relative to *https://hapicloud-dev.apigee.net/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelReservation**](ReservationApi.md#cancelReservation) | **POST** /reservations/{id}/cancel | Cancel reservation
-[**createReservation**](ReservationApi.md#createReservation) | **POST** /reservations | Create reservation
-[**updateReservation**](ReservationApi.md#updateReservation) | **PUT** /reservations | Update reservation
+[**cancelReservation**](ReservationApi.md#cancelreservation) | **POST** /reservations/{id}/cancel | Cancel reservation
+[**createReservation**](ReservationApi.md#createreservation) | **POST** /reservations | Create reservation
+[**updateReservation**](ReservationApi.md#updatereservation) | **PUT** /reservations | Update reservation
 
 # **cancelReservation**
 > \HapiCommand\Model\CommandProgressStatus cancelReservation($id, $body)
@@ -31,7 +31,7 @@ $apiInstance = new HapiCommand\Api\ReservationApi(
     $config
 );
 $id = "id_example"; // string | Reservation id for the operation
-$body = new \HapiCommand\Model\Reservation(); // \HapiCommand\Model\Reservation | 
+$body = new \HapiCommand\Model\ReservationCancel(); // \HapiCommand\Model\ReservationCancel | 
 
 try {
     $result = $apiInstance->cancelReservation($id, $body);
@@ -47,7 +47,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Reservation id for the operation |
- **body** | [**\HapiCommand\Model\Reservation**](../Model/Reservation.md)|  | [optional]
+ **body** | [**\HapiCommand\Model\ReservationCancel**](../Model/ReservationCancel.md)|  | [optional]
 
 ### Return type
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

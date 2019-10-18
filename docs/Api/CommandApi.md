@@ -4,7 +4,7 @@ All URIs are relative to *https://hapicloud-dev.apigee.net/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**commandStatus**](CommandApi.md#commandStatus) | **GET** /commands/{id} | Command Status
+[**commandStatus**](CommandApi.md#commandstatus) | **GET** /commands/{id} | Command Status
 
 # **commandStatus**
 > \HapiCommand\Model\CommandProgressStatus commandStatus($id)

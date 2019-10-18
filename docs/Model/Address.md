@@ -13,5 +13,5 @@ Name | Type | Description | Notes
 **postal_code** | **string** | postal or zip code associated to address | [optional] 
 **country** | [**\HapiCommand\Model\Country**](Country.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
