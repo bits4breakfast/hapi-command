@@ -1,16 +1,16 @@
 # HapiCommand\CommandApi
 
-All URIs are relative to *https://hapicloud-dev.apigee.net/api*
+All URIs are relative to *https://command-api-dev.hapicloud.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**commandStatus**](CommandApi.md#commandStatus) | **GET** /commands/{id} | Command Status
+[**getCommandProgressStatus**](CommandApi.md#getCommandProgressStatus) | **GET** /{channelId}/commands/{id} | Command Status
 
 
 
-## commandStatus
+## getCommandProgressStatus
 
-> \HapiCommand\Model\CommandProgressStatus commandStatus($id)
+> \HapiCommand\Model\CommandProgressStatusDto getCommandProgressStatus($channel_id, $id)
 
 Command Status
 
@@ -35,13 +35,14 @@ $apiInstance = new HapiCommand\Api\CommandApi(
     new GuzzleHttp\Client(),
     $config
 );
+$channel_id = 'channel_id_example'; // string | Channel Id for the operation
 $id = 'id_example'; // string | ID returned as the result of async operation
 
 try {
-    $result = $apiInstance->commandStatus($id);
+    $result = $apiInstance->getCommandProgressStatus($channel_id, $id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CommandApi->commandStatus: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CommandApi->getCommandProgressStatus: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -51,11 +52,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **channel_id** | **string**| Channel Id for the operation |
  **id** | **string**| ID returned as the result of async operation |
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
+[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
 
 ### Authorization
 

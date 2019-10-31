@@ -1,22 +1,22 @@
 # HapiCommand\ReservationApi
 
-All URIs are relative to *https://hapicloud-dev.apigee.net/api*
+All URIs are relative to *https://command-api-dev.hapicloud.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelReservation**](ReservationApi.md#cancelReservation) | **POST** /reservations/{id}/cancel | Cancel reservation
-[**createReservation**](ReservationApi.md#createReservation) | **POST** /reservations | Create reservation
-[**updateReservation**](ReservationApi.md#updateReservation) | **PUT** /reservations | Update reservation
+[**cancelReservation**](ReservationApi.md#cancelReservation) | **POST** /{channelId}/reservations/{id}/cancel | Cancel reservation
+[**createReservation**](ReservationApi.md#createReservation) | **POST** /{channelId}/reservations | Create reservation
+[**updateReservation**](ReservationApi.md#updateReservation) | **PUT** /{channelId}/reservations | Update reservation
 
 
 
 ## cancelReservation
 
-> \HapiCommand\Model\CommandProgressStatus cancelReservation($id, $reservation_cancel)
+> \HapiCommand\Model\CommandProgressStatusDto cancelReservation($channel_id, $id, $reservation)
 
 Cancel reservation
 
-Cancel reservation operation in external system.  A cancellation comment and cancellation date can be sent in the body of the request.
+Cancel reservation operation in external system
 
 ### Example
 
@@ -37,11 +37,12 @@ $apiInstance = new HapiCommand\Api\ReservationApi(
     new GuzzleHttp\Client(),
     $config
 );
+$channel_id = 'channel_id_example'; // string | Channel Id for the operation
 $id = 'id_example'; // string | Reservation id for the operation
-$reservation_cancel = {"cancellationComment":"guest cancelled trip","cancelledDate":"2018-12-27"}; // \HapiCommand\Model\ReservationCancel | 
+$reservation = {"cancelReason":"BECAUSE","cancelDate":"2019-01-16"}; // \HapiCommand\Model\Reservation | 
 
 try {
-    $result = $apiInstance->cancelReservation($id, $reservation_cancel);
+    $result = $apiInstance->cancelReservation($channel_id, $id, $reservation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReservationApi->cancelReservation: ', $e->getMessage(), PHP_EOL;
@@ -54,12 +55,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **channel_id** | **string**| Channel Id for the operation |
  **id** | **string**| Reservation id for the operation |
- **reservation_cancel** | [**\HapiCommand\Model\ReservationCancel**](../Model/ReservationCancel.md)|  | [optional]
+ **reservation** | [**\HapiCommand\Model\Reservation**](../Model/Reservation.md)|  |
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
+[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
 
 ### Authorization
 
@@ -77,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## createReservation
 
-> \HapiCommand\Model\CommandProgressStatus createReservation($reservation)
+> \HapiCommand\Model\CommandProgressStatusDto createReservation($channel_id, $reservation)
 
 Create reservation
 
@@ -102,10 +104,11 @@ $apiInstance = new HapiCommand\Api\ReservationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$reservation = {"propertyId":{"propertyCode":"FSDH","chainCode":"HAPI"},"bookingConfirmationId":"ABCD123","arrivalDate":"2019-01-01","departureDate":"2019-01-03","adults":1,"children":0,"guests":[{"profile":{"name":{"first":"Christoper","last":"Guest"}}}],"roomStays":[{"rates":[{"effectiveDates":{"start":"2019-01-01","end":"2019-01-03"},"amount":150,"currencyCode":"USD"}],"roomCount":1,"roomType":"DBL"}],"services":[{"id":1500,"type":"FIXED_CHARGE","price":35.75,"quantity":1,"costType":"PER_NIGHT","dates":{"start":"2019-01-01","end":"2019-01-03"}}]}; // \HapiCommand\Model\Reservation | 
+$channel_id = 'channel_id_example'; // string | Channel Id for the operation
+$reservation = {"bookingConfirmationId":"A21YTR6","adults":1,"children":1,"arrivalTime":"17:17:00","arrivalDate":"2018-12-15","departureDate":"2018-12-17","guests":[{"profile":{"name":{"first":"Michael","last":"Kruglov","middle":"Michaluch"},"emails":[{"type":"PERSONAL","address":"michaluch@clever.com"}],"addresses":[{"type":"HOME","address1":"8581 Santa Monica Blvd","address2":"2","address3":"3","city":"NY","postalCode":"12345"}],"phones":[{"type":"PERSONAL","number":7.9169871234E10}]}}],"roomStays":[{"roomType":"KNG","roomCount":1,"rates":[{"effectiveDates":{"start":"2018-12-15","end":"2018-12-17"},"amount":"300","currencyCode":"USD"}]}]}; // \HapiCommand\Model\Reservation | 
 
 try {
-    $result = $apiInstance->createReservation($reservation);
+    $result = $apiInstance->createReservation($channel_id, $reservation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReservationApi->createReservation: ', $e->getMessage(), PHP_EOL;
@@ -118,11 +121,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reservation** | [**\HapiCommand\Model\Reservation**](../Model/Reservation.md)|  | [optional]
+ **channel_id** | **string**| Channel Id for the operation |
+ **reservation** | [**\HapiCommand\Model\Reservation**](../Model/Reservation.md)|  |
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
+[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
 
 ### Authorization
 
@@ -140,7 +144,7 @@ Name | Type | Description  | Notes
 
 ## updateReservation
 
-> \HapiCommand\Model\CommandProgressStatus updateReservation($reservation)
+> \HapiCommand\Model\CommandProgressStatusDto updateReservation($channel_id, $reservation)
 
 Update reservation
 
@@ -165,10 +169,11 @@ $apiInstance = new HapiCommand\Api\ReservationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$reservation = {"propertyId":{"propertyCode":"FSDH","chainCode":"HAPI"},"id":164650,"arrivalDate":"2019-01-01","departureDate":"2019-01-03","adults":1,"guests":[{"profile":{"id":152210,"name":{"first":"Christoper","last":"Guest"}}}],"roomStays":[{"rates":[{"effectiveDates":{"start":"2019-01-01","end":"2019-01-03"},"amount":175,"currencyCode":"USD"}],"roomCount":1,"roomType":"DLK"}],"services":[{"id":1500,"type":"FIXED_CHARGE","price":35.75,"quantity":1,"costType":"PER_NIGHT","dates":{"start":"2019-01-01","end":"2019-01-03"}}]}; // \HapiCommand\Model\Reservation | 
+$channel_id = 'channel_id_example'; // string | Channel Id for the operation
+$reservation = {"id":1,"bookingConfirmationId":"A19YTR6","adults":1,"children":1,"arrivalTime":"2018-12-15T17:17:00Z","arrivalDate":"2018-12-15","departureDate":"2018-12-17","guests":[{"profile":{"name":{"first":"Nikolay","last":"Kruglov","middle":"Michaluch"},"emails":[{"type":"PERSONAL","address":"michaluch@clever.com"}],"addresses":[{"type":"HOME","address1":"8581 Santa Monica Blvd","city":"NY","postalCode":12345}],"phones":[{"type":"PERSONAL","number":7.9169871234E10}]}}],"roomStays":[{"roomType":"KNG","rates":[{"effectiveDates":{"start":"2018-12-15","end":"2018-12-17"},"amount":300,"currencyCode":"USD"}]}]}; // \HapiCommand\Model\Reservation | 
 
 try {
-    $result = $apiInstance->updateReservation($reservation);
+    $result = $apiInstance->updateReservation($channel_id, $reservation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReservationApi->updateReservation: ', $e->getMessage(), PHP_EOL;
@@ -181,11 +186,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **channel_id** | **string**| Channel Id for the operation |
  **reservation** | [**\HapiCommand\Model\Reservation**](../Model/Reservation.md)|  |
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
+[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
 
 ### Authorization
 

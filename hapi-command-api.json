@@ -1,0 +1,1422 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "HAPI Command API",
+        "version": "v1"
+    },
+    "servers": [{
+        "url": "https://command-api-dev.hapicloud.io",
+        "variables": {}
+    }],
+    "security": [{"Bearer": []}],
+    "paths": {
+        "/{channelId}/allotments/{allotmentId}/cancel": {"post": {
+            "tags": ["Allotment"],
+            "operationId": "cancelAllotment",
+            "parameters": [
+                {
+                    "name": "channelId",
+                    "in": "path",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                },
+                {
+                    "name": "allotmentId",
+                    "in": "path",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                }
+            ],
+            "requestBody": {
+                "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Allotment"}}},
+                "required": true
+            },
+            "responses": {"200": {
+                "description": "Command Progress Status",
+                "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"}}}
+            }}
+        }},
+        "/{channelId}/allotments": {
+            "put": {
+                "tags": ["Allotment"],
+                "description": "Update an allotment. Allotment must contain exactly one group profile. All profiles must have id",
+                "operationId": "updateAllotment",
+                "parameters": [{
+                    "name": "channelId",
+                    "in": "path",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                }],
+                "requestBody": {
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Allotment"}}},
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Command Progress Status",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"}}}
+                    },
+                    "400": {
+                        "description": "Not correct channel for the operation",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/BadRequestError"}}}
+                    },
+                    "401": {
+                        "description": "Authentication Failed: Token corrupted",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/UnauthorizedError"}}}
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Allotment"],
+                "description": "Create an allotment. Allotment must contain exactly one group profile",
+                "operationId": "createAllotment",
+                "parameters": [{
+                    "name": "channelId",
+                    "in": "path",
+                    "description": "Channel Id for the operation",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                }],
+                "requestBody": {
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Allotment"}}},
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create allotment",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"}}}
+                    },
+                    "400": {
+                        "description": "Not correct channel for the operation",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/BadRequestError"}}}
+                    },
+                    "401": {
+                        "description": "Authentication Failed: Token corrupted",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/UnauthorizedError"}}}
+                    }
+                }
+            }
+        },
+        "/{channelId}/commands/{id}": {"get": {
+            "tags": ["Command"],
+            "summary": "Command Status",
+            "description": "Return command status of the running async operation",
+            "operationId": "getCommandProgressStatus",
+            "parameters": [
+                {
+                    "name": "channelId",
+                    "in": "path",
+                    "description": "Channel Id for the operation",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID returned as the result of async operation",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Command status of the running async operation",
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"}}}
+                },
+                "400": {
+                    "description": "Command not found",
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoCommandFoundError"}}}
+                },
+                "401": {
+                    "description": "Authentication Failed: Token corrupted",
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/UnauthorizedError"}}}
+                }
+            }
+        }},
+        "/{channelId}/reservations": {
+            "put": {
+                "tags": ["Reservation"],
+                "summary": "Update reservation",
+                "description": "Update reservation operation in external system",
+                "operationId": "updateReservation",
+                "parameters": [{
+                    "name": "channelId",
+                    "in": "path",
+                    "description": "Channel Id for the operation",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                }],
+                "requestBody": {
+                    "content": {"application/json": {
+                        "schema": {"$ref": "#/components/schemas/Reservation"},
+                        "example": {
+                            "id": 1,
+                            "bookingConfirmationId": "A19YTR6",
+                            "adults": 1,
+                            "children": 1,
+                            "arrivalTime": "2018-12-15T17:17:00Z",
+                            "arrivalDate": "2018-12-15",
+                            "departureDate": "2018-12-17",
+                            "guests": [{"profile": {
+                                "name": {
+                                    "first": "Nikolay",
+                                    "last": "Kruglov",
+                                    "middle": "Michaluch"
+                                },
+                                "emails": [{
+                                    "type": "PERSONAL",
+                                    "address": "michaluch@clever.com"
+                                }],
+                                "addresses": [{
+                                    "type": "HOME",
+                                    "address1": "8581 Santa Monica Blvd",
+                                    "city": "NY",
+                                    "postalCode": 12345
+                                }],
+                                "phones": [{
+                                    "type": "PERSONAL",
+                                    "number": 7.9169871234E10
+                                }]
+                            }}],
+                            "roomStays": [{
+                                "roomType": "KNG",
+                                "rates": [{
+                                    "effectiveDates": {
+                                        "start": "2018-12-15",
+                                        "end": "2018-12-17"
+                                    },
+                                    "amount": 300,
+                                    "currencyCode": "USD"
+                                }]
+                            }]
+                        }
+                    }},
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Command Progress Status",
+                        "content": {"application/json": {
+                            "schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"},
+                            "example": {
+                                "id": "ebe12864-f131-4a1d-8f75-944e88574c7a",
+                                "entity": "RESERVATION",
+                                "action": "UPDATE",
+                                "status": "COMMAND IN PROGRESS",
+                                "created": "2019-01-15T12:46:21.103Z"
+                            }
+                        }}
+                    },
+                    "400": {
+                        "description": "Not correct channel for the operation",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoChannelFoundError"}}}
+                    },
+                    "401": {
+                        "description": "Authentication Failed: Token corrupted",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/UnauthorizedError"}}}
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Reservation"],
+                "summary": "Create reservation",
+                "description": "Create reservation operation in external system",
+                "operationId": "createReservation",
+                "parameters": [{
+                    "name": "channelId",
+                    "in": "path",
+                    "description": "Channel Id for the operation",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                }],
+                "requestBody": {
+                    "content": {"application/json": {
+                        "schema": {"$ref": "#/components/schemas/Reservation"},
+                        "example": {
+                            "bookingConfirmationId": "A21YTR6",
+                            "adults": 1,
+                            "children": 1,
+                            "arrivalTime": "17:17:00",
+                            "arrivalDate": "2018-12-15",
+                            "departureDate": "2018-12-17",
+                            "guests": [{"profile": {
+                                "name": {
+                                    "first": "Michael",
+                                    "last": "Kruglov",
+                                    "middle": "Michaluch"
+                                },
+                                "emails": [{
+                                    "type": "PERSONAL",
+                                    "address": "michaluch@clever.com"
+                                }],
+                                "addresses": [{
+                                    "type": "HOME",
+                                    "address1": "8581 Santa Monica Blvd",
+                                    "address2": "2",
+                                    "address3": "3",
+                                    "city": "NY",
+                                    "postalCode": "12345"
+                                }],
+                                "phones": [{
+                                    "type": "PERSONAL",
+                                    "number": 7.9169871234E10
+                                }]
+                            }}],
+                            "roomStays": [{
+                                "roomType": "KNG",
+                                "roomCount": 1,
+                                "rates": [{
+                                    "effectiveDates": {
+                                        "start": "2018-12-15",
+                                        "end": "2018-12-17"
+                                    },
+                                    "amount": "300",
+                                    "currencyCode": "USD"
+                                }]
+                            }]
+                        }
+                    }},
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Command Progress Status",
+                        "content": {"application/json": {
+                            "schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"},
+                            "example": {
+                                "id": "506a711b-ffe0-4f31-9abe-bc0e3a70cb60",
+                                "entity": "RESERVATION",
+                                "action": "CREATE",
+                                "status": "COMMAND IN PROGRESS",
+                                "created": "2019-01-16T11:22:00.112Z"
+                            }
+                        }}
+                    },
+                    "400": {
+                        "description": "Not correct channel for the operation",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoChannelFoundError"}}}
+                    },
+                    "401": {
+                        "description": "Authentication Failed: Token corrupted",
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/UnauthorizedError"}}}
+                    }
+                }
+            }
+        },
+        "/{channelId}/reservations/{id}/cancel": {"post": {
+            "tags": ["Reservation"],
+            "summary": "Cancel reservation",
+            "description": "Cancel reservation operation in external system",
+            "operationId": "cancelReservation",
+            "parameters": [
+                {
+                    "name": "channelId",
+                    "in": "path",
+                    "description": "Channel Id for the operation",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Reservation id for the operation",
+                    "required": true,
+                    "content": {"*/*": {"schema": {"type": "string"}}}
+                }
+            ],
+            "requestBody": {
+                "content": {"application/json": {
+                    "schema": {"$ref": "#/components/schemas/Reservation"},
+                    "example": {
+                        "cancelReason": "BECAUSE",
+                        "cancelDate": "2019-01-16"
+                    }
+                }},
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "Command Progress Status",
+                    "content": {"application/json": {
+                        "schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"},
+                        "example": {
+                            "id": "d58619ba-4115-441f-bb77-18846a12ed1f",
+                            "entity": "RESERVATION",
+                            "action": "CANCEL",
+                            "status": "COMMAND IN PROGRESS",
+                            "created": "2019-01-16T11:25:45.375Z"
+                        }
+                    }}
+                },
+                "400": {
+                    "description": "Not correct channel for the operation",
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoChannelFoundError"}}}
+                },
+                "401": {
+                    "description": "Authentication Failed: Token corrupted",
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/UnauthorizedError"}}}
+                }
+            }
+        }}
+    },
+    "components": {
+        "schemas": {
+            "CommandProgressStatusDto": {
+                "required": ["status"],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "24e03d4d-6c10-4a7e-bade-4d77e0a714b8"
+                    },
+                    "entity": {
+                        "type": "string",
+                        "description": "Type of object. For example RESERVATION, PROFILE",
+                        "example": "ENTITY_TYPE"
+                    },
+                    "action": {
+                        "type": "string",
+                        "description": "Action of the operation. For example CREATE, UPDATE",
+                        "example": "ACTION_TYPE"
+                    },
+                    "cancellationId": {"type": "string"},
+                    "reservationId": {"type": "string"},
+                    "bookingConfirmationId": {"type": "string"},
+                    "profileId": {"type": "string"},
+                    "profileIds": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    },
+                    "allotmentId": {"type": "string"},
+                    "status": {
+                        "type": "string",
+                        "example": "IN PROGRESS"
+                    },
+                    "message": {"type": "string"},
+                    "created": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "completed": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "entityIds": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    }
+                }
+            },
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Address type",
+                        "example": "BUSINESS"
+                    },
+                    "primary": {
+                        "type": "boolean",
+                        "description": "Primary address flag",
+                        "example": true
+                    },
+                    "address1": {
+                        "type": "string",
+                        "description": "First line of address. Typically contains street info",
+                        "example": "1234 Park Ave"
+                    },
+                    "address2": {
+                        "type": "string",
+                        "description": "Second line of address. Typically contains apartment info",
+                        "example": "APT 505"
+                    },
+                    "address3": {
+                        "type": "string",
+                        "description": "Third line of address"
+                    },
+                    "city": {
+                        "type": "string",
+                        "description": "City associated to address",
+                        "example": "Miami"
+                    },
+                    "stateProvince": {"$ref": "#/components/schemas/StateProvince"},
+                    "postalCode": {
+                        "type": "string",
+                        "description": "Postal or zip code associated to address",
+                        "example": "33133"
+                    },
+                    "country": {"$ref": "#/components/schemas/Country"}
+                }
+            },
+            "Allotment": {
+                "type": "object",
+                "properties": {
+                    "propertyId": {"$ref": "#/components/schemas/PropertyId"},
+                    "id": {
+                        "type": "string",
+                        "description": "Block code and object id",
+                        "example": "HOLIDAY2018"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Block status",
+                        "example": "ACTIVE"
+                    },
+                    "blockName": {
+                        "type": "string",
+                        "description": "Block name",
+                        "example": "CONFERENCE HOLIDAY 2018"
+                    },
+                    "dates": {"$ref": "#/components/schemas/TimeSpan"},
+                    "marketCode": {
+                        "type": "string",
+                        "description": "Code identifying marketing type for rate",
+                        "example": "F"
+                    },
+                    "sourceCode": {
+                        "type": "string",
+                        "description": "Code identifying source of rate associated to block",
+                        "example": "SRC"
+                    },
+                    "channelCode": {
+                        "type": "string",
+                        "description": "Code identifying booking channel for block",
+                        "example": "SRC"
+                    },
+                    "bookingMethod": {
+                        "type": "string",
+                        "description": "Code identifying booking method for block",
+                        "example": "IWEB"
+                    },
+                    "billingType": {
+                        "type": "string",
+                        "description": "Used to indicate if charges should be billed to master account"
+                    },
+                    "includesFoodAndBev": {
+                        "type": "boolean",
+                        "description": "Used to indicate whether food and drinks should be charged to master account",
+                        "example": true
+                    },
+                    "blockType": {
+                        "type": "string",
+                        "description": "Type of block",
+                        "example": "ELASTIC"
+                    },
+                    "comments": {
+                        "type": "array",
+                        "description": "Free text comments associated to block",
+                        "items": {"$ref": "#/components/schemas/Comment"}
+                    },
+                    "profiles": {
+                        "type": "array",
+                        "items": {"$ref": "#/components/schemas/Profile"}
+                    },
+                    "inventoryBlocks": {
+                        "type": "array",
+                        "description": "Inventory block detail for allotment",
+                        "items": {"$ref": "#/components/schemas/InventoryBlock"}
+                    },
+                    "paymentMethod": {
+                        "type": "string",
+                        "description": "The payment method associated with the block",
+                        "example": "CC"
+                    },
+                    "blockInventoryType": {
+                        "type": "string",
+                        "description": "The type for the inventory such as ELASTIC, NON-ELASTIC, SELL_LIMIT",
+                        "example": "Elastic"
+                    },
+                    "cancelCode": {
+                        "type": "string",
+                        "description": "Cancel code for allotment",
+                        "example": "RATE"
+                    },
+                    "cancelDescription": {
+                        "type": "string",
+                        "description": "Text description of cancel reason",
+                        "example": "Not Taking Place"
+                    },
+                    "cutoffDate": {
+                        "type": "string",
+                        "description": "Used to determine when all inventory blocks is released back into house inventory",
+                        "example": "2019-01-27"
+                    }
+                },
+                "description": "Group block of inventory"
+            },
+            "BlockRate": {
+                "type": "object",
+                "properties": {
+                    "guests": {
+                        "type": "integer",
+                        "description": "Number of guests",
+                        "format": "int32"
+                    },
+                    "occupancyProjected": {
+                        "type": "integer",
+                        "description": "Projected occupancy for number of guests indicated",
+                        "format": "int32",
+                        "example": 0
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "Rate amount",
+                        "example": 105.5
+                    },
+                    "includesTax": {
+                        "type": "boolean",
+                        "description": "Is indicated rate inclusive of tax",
+                        "example": true
+                    }
+                }
+            },
+            "Comment": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Type or source of comment",
+                        "example": "COMMISSION"
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "Comment text",
+                        "example": "guest was very nice"
+                    },
+                    "author": {
+                        "type": "string",
+                        "description": "Comment creator",
+                        "example": "SUPERVISOR"
+                    },
+                    "guestViewable": {
+                        "type": "boolean",
+                        "description": "Should comment be visible to guest",
+                        "example": false
+                    },
+                    "time": {
+                        "type": "string",
+                        "description": "Comment create/update time (yyyy-MM-ddTHH:mm:SS)",
+                        "example": "2018-12-01T02:15:00"
+                    }
+                }
+            },
+            "Country": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "example": "US"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "United States"
+                    }
+                }
+            },
+            "Email": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "example": "PRIVATE"
+                    },
+                    "address": {
+                        "type": "string",
+                        "example": "cguest@email.com"
+                    },
+                    "primary": {
+                        "type": "boolean",
+                        "description": "Primary email flag",
+                        "example": true
+                    }
+                }
+            },
+            "IdDocument": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "example": "PASSPORT"
+                    },
+                    "number": {
+                        "type": "string",
+                        "example": "12345"
+                    }
+                },
+                "description": "Identifying document for profile holder"
+            },
+            "InventoryBlock": {
+                "type": "object",
+                "properties": {
+                    "roomType": {
+                        "type": "string",
+                        "description": "Room type",
+                        "example": "KING"
+                    },
+                    "rateCode": {
+                        "type": "string",
+                        "description": "Code identifying rate for block",
+                        "example": "AAA"
+                    },
+                    "dates": {"$ref": "#/components/schemas/TimeSpan"},
+                    "numberToBlock": {
+                        "type": "integer",
+                        "description": "Number of rooms for this block per day per room type",
+                        "format": "int32",
+                        "example": 2
+                    },
+                    "numberSold": {
+                        "type": "integer",
+                        "description": "Number of rooms sold in block",
+                        "format": "int32",
+                        "example": 5
+                    },
+                    "compRoomsNumber": {
+                        "type": "integer",
+                        "description": "Number of comp rooms available in block",
+                        "format": "int32",
+                        "example": 0
+                    },
+                    "pickUpStatus": {
+                        "type": "string",
+                        "description": "Inventory count type",
+                        "example": "PHYSICAL"
+                    },
+                    "currencyCode": {
+                        "type": "string",
+                        "description": "Code identifying type of currency associated to rate",
+                        "example": "USD"
+                    },
+                    "rates": {
+                        "type": "array",
+                        "description": "Rate and occupancy detail for room type in block",
+                        "items": {"$ref": "#/components/schemas/BlockRate"}
+                    }
+                },
+                "description": "Inventory block detail for allotment"
+            },
+            "LoyaltyProgram": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Loyalty program type",
+                        "example": "Hotel Rewards"
+                    },
+                    "membershipId": {
+                        "type": "string",
+                        "description": "Account number",
+                        "example": "HR6585421"
+                    }
+                },
+                "description": "Rewards program"
+            },
+            "Name": {
+                "type": "object",
+                "properties": {
+                    "salutation": {
+                        "type": "string",
+                        "description": "Salutation for guest",
+                        "example": "Mr."
+                    },
+                    "first": {
+                        "type": "string",
+                        "description": "First name",
+                        "example": "Christopher"
+                    },
+                    "middle": {
+                        "type": "string",
+                        "description": "Middle name or initial",
+                        "example": "M"
+                    },
+                    "last": {
+                        "type": "string",
+                        "description": "Last name",
+                        "example": "Guest"
+                    }
+                },
+                "description": "Name of profile holder"
+            },
+            "Phone": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "example": "MOBILE"
+                    },
+                    "number": {
+                        "type": "string",
+                        "example": "555-555-1212"
+                    },
+                    "primary": {
+                        "type": "boolean",
+                        "description": "Primary phone flag",
+                        "example": true
+                    }
+                }
+            },
+            "Profile": {
+                "type": "object",
+                "properties": {
+                    "propertyId": {"$ref": "#/components/schemas/PropertyId"},
+                    "id": {
+                        "type": "string",
+                        "description": "Profile identifier",
+                        "example": "542154"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "PERSON"
+                    },
+                    "name": {"$ref": "#/components/schemas/Name"},
+                    "company": {
+                        "type": "string",
+                        "description": "Used to provide company name when name field is used for contact info",
+                        "example": "HAPI"
+                    },
+                    "dateOfBirth": {
+                        "type": "string",
+                        "example": "1979-10-31"
+                    },
+                    "emails": {
+                        "type": "array",
+                        "items": {"$ref": "#/components/schemas/Email"}
+                    },
+                    "phones": {
+                        "type": "array",
+                        "items": {"$ref": "#/components/schemas/Phone"}
+                    },
+                    "addresses": {
+                        "type": "array",
+                        "items": {"$ref": "#/components/schemas/Address"}
+                    },
+                    "idDocuments": {
+                        "type": "array",
+                        "description": "Identifying document for profile holder",
+                        "items": {"$ref": "#/components/schemas/IdDocument"}
+                    },
+                    "loyaltyPrograms": {
+                        "type": "array",
+                        "description": "Rewards program",
+                        "items": {"$ref": "#/components/schemas/LoyaltyProgram"}
+                    },
+                    "creator": {
+                        "type": "string",
+                        "description": "User or interface who created the profile",
+                        "example": "AFESSE"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "description": "Read-only date and time the profile was created",
+                        "example": "2018-05-14T20:02:40.000"
+                    },
+                    "travelAgentId": {
+                        "type": "string",
+                        "description": "IATA number",
+                        "example": "ABC1234"
+                    },
+                    "preferences": {
+                        "type": "array",
+                        "description": "Guest request",
+                        "example": "Guest will be arriving by spaceship",
+                        "items": {"$ref": "#/components/schemas/SpecialRequest"}
+                    },
+                    "comments": {
+                        "type": "array",
+                        "description": "Free text comments",
+                        "items": {"$ref": "#/components/schemas/Comment"}
+                    },
+                    "gender": {
+                        "type": "string",
+                        "description": "Gender of the guest",
+                        "example": "MALE"
+                    },
+                    "hapiId": {
+                        "type": "string",
+                        "description": "UID of the profile in HAPI system",
+                        "example": "6327846283assd76xs"
+                    }
+                }
+            },
+            "PropertyId": {
+                "type": "object",
+                "properties": {
+                    "chainCode": {
+                        "type": "string",
+                        "example": "HIL"
+                    },
+                    "propertyCode": {
+                        "type": "string",
+                        "example": "FSDH"
+                    }
+                },
+                "description": "Property id in HAPI system"
+            },
+            "SpecialRequest": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Request type",
+                        "example": "INT"
+                    },
+                    "code": {
+                        "type": "string",
+                        "description": "Request code",
+                        "example": "DOUBLE"
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Request description or comments",
+                        "example": "Double Bed"
+                    }
+                },
+                "description": "Guest request"
+            },
+            "StateProvince": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "Code identifying state or province associated to address",
+                        "example": "FL"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of state or province associated to address",
+                        "example": "Florida"
+                    }
+                }
+            },
+            "TimeSpan": {
+                "type": "object",
+                "properties": {
+                    "start": {
+                        "type": "string",
+                        "description": "Begin date of span, in YYYY-MM-DD format",
+                        "example": "2018-12-01"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "End date of span, in YYYY-MM-DD format",
+                        "example": "2018-12-03"
+                    }
+                },
+                "description": "Duration of event"
+            },
+            "BadRequestError": {
+                "required": [
+                    "error",
+                    "message",
+                    "path",
+                    "status",
+                    "timestamp"
+                ],
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "example": "2019-10-29T14:05:26.479+0000"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "error": {
+                        "type": "string",
+                        "example": "N/A"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "Invalid JSON"
+                    },
+                    "path": {
+                        "type": "string",
+                        "example": "/api/v1/oxi-to-dev-channel/allotments"
+                    }
+                },
+                "description": "Not correct channel for the operation"
+            },
+            "UnauthorizedError": {
+                "required": [
+                    "error",
+                    "message",
+                    "path",
+                    "status",
+                    "timestamp"
+                ],
+                "type": "object",
+                "properties": {
+                    "timestamp": {"type": "string"},
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "error": {"type": "string"},
+                    "message": {"type": "string"},
+                    "path": {"type": "string"}
+                },
+                "description": "Authentication Failed: Token corrupted"
+            },
+            "NoCommandFoundError": {
+                "required": [
+                    "error",
+                    "message",
+                    "path",
+                    "status",
+                    "timestamp"
+                ],
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "example": "2018-12-19T07:23:52.429+0000"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 400
+                    },
+                    "error": {
+                        "type": "string",
+                        "example": "Bad Request"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "No command found by provided id: d70ce51b-8400-4f5b-aedb-278f599a04a."
+                    },
+                    "path": {
+                        "type": "string",
+                        "example": "/api/v1/commands/channel-id/d70ce51b-8400-4f5b-aedb-278f599a04a"
+                    }
+                },
+                "description": "Command not found"
+            },
+            "NoChannelFoundError": {
+                "required": [
+                    "error",
+                    "message",
+                    "path",
+                    "status",
+                    "timestamp"
+                ],
+                "type": "object",
+                "properties": {
+                    "timestamp": {"type": "string"},
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "error": {"type": "string"},
+                    "message": {"type": "string"},
+                    "path": {"type": "string"}
+                },
+                "description": "Not correct channel for the operation"
+            },
+            "Guest": {
+                "type": "object",
+                "properties": {
+                    "profile": {"$ref": "#/components/schemas/Profile"},
+                    "primary": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "arrivalTransport": {"$ref": "#/components/schemas/TransportationInfo"},
+                    "departureTransport": {"$ref": "#/components/schemas/TransportationInfo"}
+                },
+                "description": "Profile info for guest(s)"
+            },
+            "Reservation": {
+                "type": "object",
+                "properties": {
+                    "propertyId": {"$ref": "#/components/schemas/PropertyId"},
+                    "id": {
+                        "type": "string",
+                        "description": "Reservation identifier and object key",
+                        "example": "542154"
+                    },
+                    "bookingConfirmationId": {
+                        "type": "string",
+                        "description": "Unique confirmation id within given hotel",
+                        "example": "L7RR1A"
+                    },
+                    "arrivalDate": {
+                        "type": "string",
+                        "description": "Check-in date, in YYYY-MM-DD format",
+                        "example": "2018-08-23"
+                    },
+                    "arrivalTime": {
+                        "type": "string",
+                        "description": "Estimated check-in time",
+                        "example": "17:00:00"
+                    },
+                    "departureTime": {
+                        "type": "string",
+                        "description": "Estimated check-out time",
+                        "example": "18:00:00"
+                    },
+                    "departureDate": {
+                        "type": "string",
+                        "description": "Check-out date, in YYYY-MM-DD format",
+                        "example": "2018-08-25"
+                    },
+                    "creator": {
+                        "type": "string",
+                        "description": "User or interface who created the reservation",
+                        "example": "GARCIA"
+                    },
+                    "cancelReason": {
+                        "type": "string",
+                        "description": "Cancel reason code. Generally cancelReason is used in type of enum in external system",
+                        "example": "BECAUSE"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "description": "Read-only reservation create date in hotel, in YYYY-MM-DDThh:mm:ss.sss format",
+                        "example": "2018-06-01T15:34:54.000"
+                    },
+                    "cancelledDate": {
+                        "type": "string",
+                        "description": "Reservation cancellation date in hotel, in YYYY-MM-DDThh:mm:ss.sss format",
+                        "example": "2018-06-01T15:34:54.000"
+                    },
+                    "cancellationNumber": {
+                        "type": "string",
+                        "description": "Cancellation number for reservation. May be supplied externally or returned from pms",
+                        "example": "CXL12345"
+                    },
+                    "cancellationComment": {
+                        "type": "string",
+                        "description": "Cancellation comment why reservation was cancelled",
+                        "example": "Just because I don't want to stay here anymore"
+                    },
+                    "adults": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 2
+                    },
+                    "children": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Current status of reservation",
+                        "example": "RESERVED"
+                    },
+                    "guests": {
+                        "type": "array",
+                        "description": "Guest profiles associated to reservation",
+                        "items": {"$ref": "#/components/schemas/Guest"}
+                    },
+                    "channel": {"type": "string"},
+                    "profiles": {
+                        "type": "array",
+                        "description": "Non-guest profiles associated to reservation",
+                        "items": {"$ref": "#/components/schemas/Profile"}
+                    },
+                    "roomStays": {
+                        "type": "array",
+                        "description": "Room stay information associated to reservation",
+                        "items": {"$ref": "#/components/schemas/RoomStay"}
+                    },
+                    "comments": {
+                        "type": "array",
+                        "example": "Guest will be arriving by spaceship",
+                        "items": {"$ref": "#/components/schemas/Comment"}
+                    },
+                    "requests": {
+                        "type": "array",
+                        "description": "Guest request",
+                        "items": {"$ref": "#/components/schemas/SpecialRequest"}
+                    },
+                    "notifications": {
+                        "type": "array",
+                        "items": {"$ref": "#/components/schemas/ReservationNotification"}
+                    },
+                    "reservationReferences": {
+                        "type": "array",
+                        "items": {"$ref": "#/components/schemas/ReservationReference"}
+                    },
+                    "hapiId": {
+                        "type": "string",
+                        "description": "UID of the reservation in HAPI system",
+                        "example": "6327846283assd76xs"
+                    }
+                }
+            },
+            "ReservationNotification": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "Alert code",
+                        "example": "OTH"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Alert text",
+                        "example": "Please give Breakfast vouchers"
+                    },
+                    "event": {
+                        "type": "string",
+                        "description": "Event that triggers alert",
+                        "example": "Check-In"
+                    }
+                }
+            },
+            "ReservationReference": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "External reference type or originating system",
+                        "example": "LIBRA"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "External reference id",
+                        "example": "b1J1K00000LboFrUAJ"
+                    }
+                }
+            },
+            "Revenue": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Classification of revenue indicated",
+                        "example": "Room"
+                    },
+                    "currencyCode": {
+                        "type": "string",
+                        "description": "Currency code of revenue amount indicated",
+                        "example": "USD"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "Rate amount",
+                        "example": 105.55
+                    },
+                    "date": {
+                        "type": "string",
+                        "description": "Transaction date",
+                        "example": "2018-08-23"
+                    }
+                },
+                "description": "Details related to revenue"
+            },
+            "RoomRate": {
+                "type": "object",
+                "properties": {
+                    "effectiveDates": {"$ref": "#/components/schemas/TimeSpan"},
+                    "rateCode": {
+                        "type": "string",
+                        "description": "Code identifying the rate",
+                        "example": "AAA"
+                    },
+                    "currencyCode": {
+                        "type": "string",
+                        "description": "Currency code of revenue amount indicated",
+                        "example": "USD"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "Rate amount",
+                        "example": 105.55
+                    }
+                }
+            },
+            "RoomStay": {
+                "type": "object",
+                "properties": {
+                    "roomNumber": {
+                        "type": "string",
+                        "description": "Room number for stay",
+                        "example": "122"
+                    },
+                    "status": {"type": "string"},
+                    "guestId": {
+                        "type": "string",
+                        "description": "Id of guest associated to stay",
+                        "example": "5658451"
+                    },
+                    "roomType": {
+                        "type": "string",
+                        "description": "Code identifying the type of room associated to stay",
+                        "example": "KING"
+                    },
+                    "rateCode": {
+                        "type": "string",
+                        "description": "Code identifying rate for stay",
+                        "example": "AAA"
+                    },
+                    "marketCode": {
+                        "type": "string",
+                        "description": "Code identifying marketing type for rate",
+                        "example": "F"
+                    },
+                    "channelCode": {
+                        "type": "string",
+                        "description": "Code identifying source of reservation",
+                        "example": "DM"
+                    },
+                    "sourceCode": {
+                        "type": "string",
+                        "description": "Code identifying source of rate associated to stay",
+                        "example": "SRC"
+                    },
+                    "blockCode": {
+                        "type": "string",
+                        "description": "Group block code",
+                        "example": "GROUPBLOCK"
+                    },
+                    "roomCount": {
+                        "type": "integer",
+                        "description": "Number of rooms associated to stay",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "paymentMethod": {
+                        "type": "string",
+                        "description": "Payment method used in the reservation",
+                        "example": "CA"
+                    },
+                    "compYN": {
+                        "type": "string",
+                        "description": "Is reservation complimentary",
+                        "example": "false"
+                    },
+                    "rates": {
+                        "type": "array",
+                        "items": {"$ref": "#/components/schemas/RoomRate"}
+                    },
+                    "revenue": {
+                        "type": "array",
+                        "description": "Details related to revenue",
+                        "items": {"$ref": "#/components/schemas/Revenue"}
+                    },
+                    "services": {
+                        "type": "array",
+                        "description": "Service or fixed charge related to reservation",
+                        "items": {"$ref": "#/components/schemas/Service"}
+                    },
+                    "promotionCode": {
+                        "type": "string",
+                        "description": "A promotion code associated with the reservation"
+                    }
+                }
+            },
+            "Service": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Code that identifies service",
+                        "example": "CRIB"
+                    },
+                    "type": {
+                        "required": [
+                            "name",
+                            "ordinal",
+                            "value"
+                        ],
+                        "type": "string",
+                        "description": "Service or fixed charge. defaults to SERVICE if not indicated",
+                        "example": "FIXED_CHARGE",
+                        "enum": [
+                            "SERVICE",
+                            "FIXED_CHARGE"
+                        ]
+                    },
+                    "price": {
+                        "type": "number",
+                        "description": "Cost of service",
+                        "example": 45
+                    },
+                    "totalAmount": {
+                        "type": "number",
+                        "description": "Total cost of service",
+                        "example": 90
+                    },
+                    "currencyCode": {
+                        "type": "string",
+                        "description": "Currency code of price indicated",
+                        "example": "USD"
+                    },
+                    "rateCode": {
+                        "type": "string",
+                        "description": "Rate code of price indicated"
+                    },
+                    "costType": {
+                        "required": [
+                            "name",
+                            "ordinal",
+                            "value"
+                        ],
+                        "type": "string",
+                        "description": "How is the service or charge priced",
+                        "example": "PER_STAY",
+                        "enum": [
+                            "PER_STAY",
+                            "PER_NIGHT",
+                            "PER_WEEK",
+                            "PER_USE",
+                            "PER_ADULT_PER_NIGHT",
+                            "PER_PERSON_PER_NIGHT"
+                        ]
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "description": "Number of service or fixed charge items",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "dates": {"$ref": "#/components/schemas/TimeSpan"},
+                    "comment": {
+                        "type": "string",
+                        "description": "Fixed charge additional information",
+                        "example": "The fixed charge is applied to guest by request"
+                    }
+                },
+                "description": "Service or fixed charge related to reservation"
+            },
+            "TransportationInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Transportation method identifier (e.g. flight number)",
+                        "example": "DL2562"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Method of transportation"
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Originating or destination location code",
+                        "example": "JFK"
+                    },
+                    "time": {
+                        "type": "string",
+                        "description": "Transport time (yyyy-MM-ddTHH:mm:SS)",
+                        "example": "2018-12-01T02:15:00"
+                    },
+                    "transportRequired": {
+                        "type": "boolean",
+                        "description": "Guest requires transportation",
+                        "example": true
+                    }
+                },
+                "description": "Arriving and departing transportation info for guest"
+            }
+        },
+        "securitySchemes": {"Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }}
+    }
+}
