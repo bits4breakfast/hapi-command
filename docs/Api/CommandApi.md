@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## getCommandProgressStatus
 
-> \HapiCommand\Model\CommandProgressStatusDto getCommandProgressStatus($channel_id, $id)
+> \HapiCommand\Model\CommandProgressStatus getCommandProgressStatus($channel_id, $id)
 
 Command Status
 
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 

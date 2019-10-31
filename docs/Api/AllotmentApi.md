@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## cancelAllotment
 
-> \HapiCommand\Model\CommandProgressStatusDto cancelAllotment($channel_id, $allotment_id, $allotment)
+> \HapiCommand\Model\CommandProgressStatus cancelAllotment($channel_id, $allotment_id, $allotment)
 
 
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ## createAllotment
 
-> \HapiCommand\Model\CommandProgressStatusDto createAllotment($channel_id, $allotment)
+> \HapiCommand\Model\CommandProgressStatus createAllotment($channel_id, $allotment)
 
 
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ## updateAllotment
 
-> \HapiCommand\Model\CommandProgressStatusDto updateAllotment($channel_id, $allotment)
+> \HapiCommand\Model\CommandProgressStatus updateAllotment($channel_id, $allotment)
 
 
 
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 

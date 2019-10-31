@@ -107,7 +107,7 @@ Class | Method | HTTP request | Description
  - [Allotment](docs/Model/Allotment.md)
  - [BadRequestError](docs/Model/BadRequestError.md)
  - [BlockRate](docs/Model/BlockRate.md)
- - [CommandProgressStatusDto](docs/Model/CommandProgressStatusDto.md)
+ - [CommandProgressStatus](docs/Model/CommandProgressStatus.md)
  - [Comment](docs/Model/Comment.md)
  - [Country](docs/Model/Country.md)
  - [Email](docs/Model/Email.md)

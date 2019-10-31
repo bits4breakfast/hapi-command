@@ -33,7 +33,7 @@
             },
             "responses": {"200": {
                 "description": "Command Progress Status",
-                "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"}}}
+                "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatus"}}}
             }}
         }},
         "/{channelId}/allotments": {
@@ -54,7 +54,7 @@
                 "responses": {
                     "200": {
                         "description": "Command Progress Status",
-                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"}}}
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatus"}}}
                     },
                     "400": {
                         "description": "Not correct channel for the operation",
@@ -84,7 +84,7 @@
                 "responses": {
                     "200": {
                         "description": "Create allotment",
-                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"}}}
+                        "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatus"}}}
                     },
                     "400": {
                         "description": "Not correct channel for the operation",
@@ -121,7 +121,7 @@
             "responses": {
                 "200": {
                     "description": "Command status of the running async operation",
-                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"}}}
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CommandProgressStatus"}}}
                 },
                 "400": {
                     "description": "Command not found",
@@ -197,7 +197,7 @@
                     "200": {
                         "description": "Command Progress Status",
                         "content": {"application/json": {
-                            "schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"},
+                            "schema": {"$ref": "#/components/schemas/CommandProgressStatus"},
                             "example": {
                                 "id": "ebe12864-f131-4a1d-8f75-944e88574c7a",
                                 "entity": "RESERVATION",
@@ -282,7 +282,7 @@
                     "200": {
                         "description": "Command Progress Status",
                         "content": {"application/json": {
-                            "schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"},
+                            "schema": {"$ref": "#/components/schemas/CommandProgressStatus"},
                             "example": {
                                 "id": "506a711b-ffe0-4f31-9abe-bc0e3a70cb60",
                                 "entity": "RESERVATION",
@@ -338,7 +338,7 @@
                 "200": {
                     "description": "Command Progress Status",
                     "content": {"application/json": {
-                        "schema": {"$ref": "#/components/schemas/CommandProgressStatusDto"},
+                        "schema": {"$ref": "#/components/schemas/CommandProgressStatus"},
                         "example": {
                             "id": "d58619ba-4115-441f-bb77-18846a12ed1f",
                             "entity": "RESERVATION",
@@ -361,7 +361,7 @@
     },
     "components": {
         "schemas": {
-            "CommandProgressStatusDto": {
+            "CommandProgressStatus": {
                 "required": ["status"],
                 "type": "object",
                 "properties": {

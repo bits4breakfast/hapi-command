@@ -126,7 +126,7 @@ class ReservationApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError
+     * @return \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError
      */
     public function cancelReservation($channel_id, $id, $reservation)
     {
@@ -145,7 +145,7 @@ class ReservationApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelReservationWithHttpInfo($channel_id, $id, $reservation)
     {
@@ -182,14 +182,14 @@ class ReservationApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HapiCommand\Model\CommandProgressStatusDto' === '\SplFileObject') {
+                    if ('\HapiCommand\Model\CommandProgressStatus' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatusDto', []),
+                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatus', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -219,7 +219,7 @@ class ReservationApi
                     ];
             }
 
-            $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+            $returnType = '\HapiCommand\Model\CommandProgressStatus';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -238,7 +238,7 @@ class ReservationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HapiCommand\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -300,7 +300,7 @@ class ReservationApi
      */
     public function cancelReservationAsyncWithHttpInfo($channel_id, $id, $reservation)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->cancelReservationRequest($channel_id, $id, $reservation);
 
         return $this->client
@@ -475,7 +475,7 @@ class ReservationApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError
+     * @return \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError
      */
     public function createReservation($channel_id, $reservation)
     {
@@ -493,7 +493,7 @@ class ReservationApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createReservationWithHttpInfo($channel_id, $reservation)
     {
@@ -530,14 +530,14 @@ class ReservationApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HapiCommand\Model\CommandProgressStatusDto' === '\SplFileObject') {
+                    if ('\HapiCommand\Model\CommandProgressStatus' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatusDto', []),
+                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatus', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -567,7 +567,7 @@ class ReservationApi
                     ];
             }
 
-            $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+            $returnType = '\HapiCommand\Model\CommandProgressStatus';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -586,7 +586,7 @@ class ReservationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HapiCommand\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -646,7 +646,7 @@ class ReservationApi
      */
     public function createReservationAsyncWithHttpInfo($channel_id, $reservation)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->createReservationRequest($channel_id, $reservation);
 
         return $this->client
@@ -806,7 +806,7 @@ class ReservationApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError
+     * @return \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError
      */
     public function updateReservation($channel_id, $reservation)
     {
@@ -824,7 +824,7 @@ class ReservationApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\NoChannelFoundError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateReservationWithHttpInfo($channel_id, $reservation)
     {
@@ -861,14 +861,14 @@ class ReservationApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HapiCommand\Model\CommandProgressStatusDto' === '\SplFileObject') {
+                    if ('\HapiCommand\Model\CommandProgressStatus' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatusDto', []),
+                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatus', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -898,7 +898,7 @@ class ReservationApi
                     ];
             }
 
-            $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+            $returnType = '\HapiCommand\Model\CommandProgressStatus';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -917,7 +917,7 @@ class ReservationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HapiCommand\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -977,7 +977,7 @@ class ReservationApi
      */
     public function updateReservationAsyncWithHttpInfo($channel_id, $reservation)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->updateReservationRequest($channel_id, $reservation);
 
         return $this->client

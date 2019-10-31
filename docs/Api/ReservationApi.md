@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## cancelReservation
 
-> \HapiCommand\Model\CommandProgressStatusDto cancelReservation($channel_id, $id, $reservation)
+> \HapiCommand\Model\CommandProgressStatus cancelReservation($channel_id, $id, $reservation)
 
 Cancel reservation
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## createReservation
 
-> \HapiCommand\Model\CommandProgressStatusDto createReservation($channel_id, $reservation)
+> \HapiCommand\Model\CommandProgressStatus createReservation($channel_id, $reservation)
 
 Create reservation
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ## updateReservation
 
-> \HapiCommand\Model\CommandProgressStatusDto updateReservation($channel_id, $reservation)
+> \HapiCommand\Model\CommandProgressStatus updateReservation($channel_id, $reservation)
 
 Update reservation
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\HapiCommand\Model\CommandProgressStatusDto**](../Model/CommandProgressStatusDto.md)
+[**\HapiCommand\Model\CommandProgressStatus**](../Model/CommandProgressStatus.md)
 
 ### Authorization
 

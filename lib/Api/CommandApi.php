@@ -125,7 +125,7 @@ class CommandApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\NoCommandFoundError|\HapiCommand\Model\UnauthorizedError
+     * @return \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\NoCommandFoundError|\HapiCommand\Model\UnauthorizedError
      */
     public function getCommandProgressStatus($channel_id, $id)
     {
@@ -143,7 +143,7 @@ class CommandApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\NoCommandFoundError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\NoCommandFoundError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCommandProgressStatusWithHttpInfo($channel_id, $id)
     {
@@ -180,14 +180,14 @@ class CommandApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HapiCommand\Model\CommandProgressStatusDto' === '\SplFileObject') {
+                    if ('\HapiCommand\Model\CommandProgressStatus' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatusDto', []),
+                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatus', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -217,7 +217,7 @@ class CommandApi
                     ];
             }
 
-            $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+            $returnType = '\HapiCommand\Model\CommandProgressStatus';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -236,7 +236,7 @@ class CommandApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HapiCommand\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -296,7 +296,7 @@ class CommandApi
      */
     public function getCommandProgressStatusAsyncWithHttpInfo($channel_id, $id)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->getCommandProgressStatusRequest($channel_id, $id);
 
         return $this->client

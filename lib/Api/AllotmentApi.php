@@ -124,7 +124,7 @@ class AllotmentApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HapiCommand\Model\CommandProgressStatusDto
+     * @return \HapiCommand\Model\CommandProgressStatus
      */
     public function cancelAllotment($channel_id, $allotment_id, $allotment)
     {
@@ -141,7 +141,7 @@ class AllotmentApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HapiCommand\Model\CommandProgressStatusDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatus, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelAllotmentWithHttpInfo($channel_id, $allotment_id, $allotment)
     {
@@ -178,20 +178,20 @@ class AllotmentApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HapiCommand\Model\CommandProgressStatusDto' === '\SplFileObject') {
+                    if ('\HapiCommand\Model\CommandProgressStatus' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatusDto', []),
+                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatus', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+            $returnType = '\HapiCommand\Model\CommandProgressStatus';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -210,7 +210,7 @@ class AllotmentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HapiCommand\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -256,7 +256,7 @@ class AllotmentApi
      */
     public function cancelAllotmentAsyncWithHttpInfo($channel_id, $allotment_id, $allotment)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->cancelAllotmentRequest($channel_id, $allotment_id, $allotment);
 
         return $this->client
@@ -429,7 +429,7 @@ class AllotmentApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\BadRequestError|\HapiCommand\Model\UnauthorizedError
+     * @return \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\BadRequestError|\HapiCommand\Model\UnauthorizedError
      */
     public function createAllotment($channel_id, $allotment)
     {
@@ -445,7 +445,7 @@ class AllotmentApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\BadRequestError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\BadRequestError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAllotmentWithHttpInfo($channel_id, $allotment)
     {
@@ -482,14 +482,14 @@ class AllotmentApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HapiCommand\Model\CommandProgressStatusDto' === '\SplFileObject') {
+                    if ('\HapiCommand\Model\CommandProgressStatus' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatusDto', []),
+                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatus', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -519,7 +519,7 @@ class AllotmentApi
                     ];
             }
 
-            $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+            $returnType = '\HapiCommand\Model\CommandProgressStatus';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -538,7 +538,7 @@ class AllotmentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HapiCommand\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -598,7 +598,7 @@ class AllotmentApi
      */
     public function createAllotmentAsyncWithHttpInfo($channel_id, $allotment)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->createAllotmentRequest($channel_id, $allotment);
 
         return $this->client
@@ -756,7 +756,7 @@ class AllotmentApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\BadRequestError|\HapiCommand\Model\UnauthorizedError
+     * @return \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\BadRequestError|\HapiCommand\Model\UnauthorizedError
      */
     public function updateAllotment($channel_id, $allotment)
     {
@@ -772,7 +772,7 @@ class AllotmentApi
      *
      * @throws \HapiCommand\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HapiCommand\Model\CommandProgressStatusDto|\HapiCommand\Model\BadRequestError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HapiCommand\Model\CommandProgressStatus|\HapiCommand\Model\BadRequestError|\HapiCommand\Model\UnauthorizedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAllotmentWithHttpInfo($channel_id, $allotment)
     {
@@ -809,14 +809,14 @@ class AllotmentApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HapiCommand\Model\CommandProgressStatusDto' === '\SplFileObject') {
+                    if ('\HapiCommand\Model\CommandProgressStatus' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatusDto', []),
+                        ObjectSerializer::deserialize($content, '\HapiCommand\Model\CommandProgressStatus', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -846,7 +846,7 @@ class AllotmentApi
                     ];
             }
 
-            $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+            $returnType = '\HapiCommand\Model\CommandProgressStatus';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -865,7 +865,7 @@ class AllotmentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HapiCommand\Model\CommandProgressStatusDto',
+                        '\HapiCommand\Model\CommandProgressStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -925,7 +925,7 @@ class AllotmentApi
      */
     public function updateAllotmentAsyncWithHttpInfo($channel_id, $allotment)
     {
-        $returnType = '\HapiCommand\Model\CommandProgressStatusDto';
+        $returnType = '\HapiCommand\Model\CommandProgressStatus';
         $request = $this->updateAllotmentRequest($channel_id, $allotment);
 
         return $this->client
