@@ -78,10 +78,6 @@ class Reservation implements ModelInterface, ArrayAccess
         'profiles' => '\HapiCommand\Model\Profile[]',
         'room_stays' => '\HapiCommand\Model\RoomStay[]',
         'comments' => '\HapiCommand\Model\Comment[]',
-        'requests' => '\HapiCommand\Model\SpecialRequest[]',
-        'notifications' => '\HapiCommand\Model\ReservationNotification[]',
-        'reservation_references' => '\HapiCommand\Model\ReservationReference[]',
-        'hapi_id' => 'string'
     ];
 
     /**
@@ -111,10 +107,6 @@ class Reservation implements ModelInterface, ArrayAccess
         'profiles' => null,
         'room_stays' => null,
         'comments' => null,
-        'requests' => null,
-        'notifications' => null,
-        'reservation_references' => null,
-        'hapi_id' => null
     ];
 
     /**
@@ -165,10 +157,6 @@ class Reservation implements ModelInterface, ArrayAccess
         'profiles' => 'profiles',
         'room_stays' => 'roomStays',
         'comments' => 'comments',
-        'requests' => 'requests',
-        'notifications' => 'notifications',
-        'reservation_references' => 'reservationReferences',
-        'hapi_id' => 'hapiId'
     ];
 
     /**
@@ -198,10 +186,6 @@ class Reservation implements ModelInterface, ArrayAccess
         'profiles' => 'setProfiles',
         'room_stays' => 'setRoomStays',
         'comments' => 'setComments',
-        'requests' => 'setRequests',
-        'notifications' => 'setNotifications',
-        'reservation_references' => 'setReservationReferences',
-        'hapi_id' => 'setHapiId'
     ];
 
     /**
@@ -231,10 +215,6 @@ class Reservation implements ModelInterface, ArrayAccess
         'profiles' => 'getProfiles',
         'room_stays' => 'getRoomStays',
         'comments' => 'getComments',
-        'requests' => 'getRequests',
-        'notifications' => 'getNotifications',
-        'reservation_references' => 'getReservationReferences',
-        'hapi_id' => 'getHapiId'
     ];
 
     /**
@@ -318,10 +298,6 @@ class Reservation implements ModelInterface, ArrayAccess
         $this->container['profiles'] = isset($data['profiles']) ? $data['profiles'] : null;
         $this->container['room_stays'] = isset($data['room_stays']) ? $data['room_stays'] : null;
         $this->container['comments'] = isset($data['comments']) ? $data['comments'] : null;
-        $this->container['requests'] = isset($data['requests']) ? $data['requests'] : null;
-        $this->container['notifications'] = isset($data['notifications']) ? $data['notifications'] : null;
-        $this->container['reservation_references'] = isset($data['reservation_references']) ? $data['reservation_references'] : null;
-        $this->container['hapi_id'] = isset($data['hapi_id']) ? $data['hapi_id'] : null;
     }
 
     /**
@@ -852,101 +828,6 @@ class Reservation implements ModelInterface, ArrayAccess
         return $this;
     }
 
-    /**
-     * Gets requests
-     *
-     * @return \HapiCommand\Model\SpecialRequest[]|null
-     */
-    public function getRequests()
-    {
-        return $this->container['requests'];
-    }
-
-    /**
-     * Sets requests
-     *
-     * @param \HapiCommand\Model\SpecialRequest[]|null $requests Guest request
-     *
-     * @return $this
-     */
-    public function setRequests($requests)
-    {
-        $this->container['requests'] = $requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets notifications
-     *
-     * @return \HapiCommand\Model\ReservationNotification[]|null
-     */
-    public function getNotifications()
-    {
-        return $this->container['notifications'];
-    }
-
-    /**
-     * Sets notifications
-     *
-     * @param \HapiCommand\Model\ReservationNotification[]|null $notifications notifications
-     *
-     * @return $this
-     */
-    public function setNotifications($notifications)
-    {
-        $this->container['notifications'] = $notifications;
-
-        return $this;
-    }
-
-    /**
-     * Gets reservation_references
-     *
-     * @return \HapiCommand\Model\ReservationReference[]|null
-     */
-    public function getReservationReferences()
-    {
-        return $this->container['reservation_references'];
-    }
-
-    /**
-     * Sets reservation_references
-     *
-     * @param \HapiCommand\Model\ReservationReference[]|null $reservation_references reservation_references
-     *
-     * @return $this
-     */
-    public function setReservationReferences($reservation_references)
-    {
-        $this->container['reservation_references'] = $reservation_references;
-
-        return $this;
-    }
-
-    /**
-     * Gets hapi_id
-     *
-     * @return string|null
-     */
-    public function getHapiId()
-    {
-        return $this->container['hapi_id'];
-    }
-
-    /**
-     * Sets hapi_id
-     *
-     * @param string|null $hapi_id UID of the reservation in HAPI system
-     *
-     * @return $this
-     */
-    public function setHapiId($hapi_id)
-    {
-        $this->container['hapi_id'] = $hapi_id;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *
