@@ -68,9 +68,7 @@ class RoomStay implements ModelInterface, ArrayAccess
         'block_code' => 'string',
         'room_count' => 'int',
         'payment_method' => 'string',
-        'comp_yn' => 'string',
         'rates' => '\HapiCommand\Model\RoomRate[]',
-        'revenue' => '\HapiCommand\Model\Revenue[]',
         'services' => '\HapiCommand\Model\Service[]',
         'promotion_code' => 'string'
     ];
@@ -92,9 +90,7 @@ class RoomStay implements ModelInterface, ArrayAccess
         'block_code' => null,
         'room_count' => 'int32',
         'payment_method' => null,
-        'comp_yn' => null,
         'rates' => null,
-        'revenue' => null,
         'services' => null,
         'promotion_code' => null
     ];
@@ -137,9 +133,7 @@ class RoomStay implements ModelInterface, ArrayAccess
         'block_code' => 'blockCode',
         'room_count' => 'roomCount',
         'payment_method' => 'paymentMethod',
-        'comp_yn' => 'compYN',
         'rates' => 'rates',
-        'revenue' => 'revenue',
         'services' => 'services',
         'promotion_code' => 'promotionCode'
     ];
@@ -161,9 +155,7 @@ class RoomStay implements ModelInterface, ArrayAccess
         'block_code' => 'setBlockCode',
         'room_count' => 'setRoomCount',
         'payment_method' => 'setPaymentMethod',
-        'comp_yn' => 'setCompYn',
         'rates' => 'setRates',
-        'revenue' => 'setRevenue',
         'services' => 'setServices',
         'promotion_code' => 'setPromotionCode'
     ];
@@ -185,9 +177,7 @@ class RoomStay implements ModelInterface, ArrayAccess
         'block_code' => 'getBlockCode',
         'room_count' => 'getRoomCount',
         'payment_method' => 'getPaymentMethod',
-        'comp_yn' => 'getCompYn',
         'rates' => 'getRates',
-        'revenue' => 'getRevenue',
         'services' => 'getServices',
         'promotion_code' => 'getPromotionCode'
     ];
@@ -263,9 +253,7 @@ class RoomStay implements ModelInterface, ArrayAccess
         $this->container['block_code'] = isset($data['block_code']) ? $data['block_code'] : null;
         $this->container['room_count'] = isset($data['room_count']) ? $data['room_count'] : null;
         $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
-        $this->container['comp_yn'] = isset($data['comp_yn']) ? $data['comp_yn'] : null;
         $this->container['rates'] = isset($data['rates']) ? $data['rates'] : null;
-        $this->container['revenue'] = isset($data['revenue']) ? $data['revenue'] : null;
         $this->container['services'] = isset($data['services']) ? $data['services'] : null;
         $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
     }
@@ -559,30 +547,6 @@ class RoomStay implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets comp_yn
-     *
-     * @return string|null
-     */
-    public function getCompYn()
-    {
-        return $this->container['comp_yn'];
-    }
-
-    /**
-     * Sets comp_yn
-     *
-     * @param string|null $comp_yn Is reservation complimentary
-     *
-     * @return $this
-     */
-    public function setCompYn($comp_yn)
-    {
-        $this->container['comp_yn'] = $comp_yn;
-
-        return $this;
-    }
-
-    /**
      * Gets rates
      *
      * @return \HapiCommand\Model\RoomRate[]|null
@@ -602,30 +566,6 @@ class RoomStay implements ModelInterface, ArrayAccess
     public function setRates($rates)
     {
         $this->container['rates'] = $rates;
-
-        return $this;
-    }
-
-    /**
-     * Gets revenue
-     *
-     * @return \HapiCommand\Model\Revenue[]|null
-     */
-    public function getRevenue()
-    {
-        return $this->container['revenue'];
-    }
-
-    /**
-     * Sets revenue
-     *
-     * @param \HapiCommand\Model\Revenue[]|null $revenue Details related to revenue
-     *
-     * @return $this
-     */
-    public function setRevenue($revenue)
-    {
-        $this->container['revenue'] = $revenue;
 
         return $this;
     }

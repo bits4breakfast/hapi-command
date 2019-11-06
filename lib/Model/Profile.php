@@ -57,7 +57,6 @@ class Profile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'property_id' => '\HapiCommand\Model\PropertyId',
         'id' => 'string',
         'type' => 'string',
         'name' => '\HapiCommand\Model\Name',
@@ -66,15 +65,8 @@ class Profile implements ModelInterface, ArrayAccess
         'emails' => '\HapiCommand\Model\Email[]',
         'phones' => '\HapiCommand\Model\Phone[]',
         'addresses' => '\HapiCommand\Model\Address[]',
-        'id_documents' => '\HapiCommand\Model\IdDocument[]',
         'loyalty_programs' => '\HapiCommand\Model\LoyaltyProgram[]',
-        'creator' => 'string',
-        'created_date' => 'string',
-        'travel_agent_id' => 'string',
-        'preferences' => '\HapiCommand\Model\SpecialRequest[]',
-        'comments' => '\HapiCommand\Model\Comment[]',
         'gender' => 'string',
-        'hapi_id' => 'string'
     ];
 
     /**
@@ -83,7 +75,6 @@ class Profile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'property_id' => null,
         'id' => null,
         'type' => null,
         'name' => null,
@@ -92,15 +83,8 @@ class Profile implements ModelInterface, ArrayAccess
         'emails' => null,
         'phones' => null,
         'addresses' => null,
-        'id_documents' => null,
         'loyalty_programs' => null,
-        'creator' => null,
-        'created_date' => null,
-        'travel_agent_id' => null,
-        'preferences' => null,
-        'comments' => null,
         'gender' => null,
-        'hapi_id' => null
     ];
 
     /**
@@ -130,7 +114,6 @@ class Profile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'property_id' => 'propertyId',
         'id' => 'id',
         'type' => 'type',
         'name' => 'name',
@@ -139,15 +122,8 @@ class Profile implements ModelInterface, ArrayAccess
         'emails' => 'emails',
         'phones' => 'phones',
         'addresses' => 'addresses',
-        'id_documents' => 'idDocuments',
         'loyalty_programs' => 'loyaltyPrograms',
-        'creator' => 'creator',
-        'created_date' => 'createdDate',
-        'travel_agent_id' => 'travelAgentId',
-        'preferences' => 'preferences',
-        'comments' => 'comments',
         'gender' => 'gender',
-        'hapi_id' => 'hapiId'
     ];
 
     /**
@@ -156,7 +132,6 @@ class Profile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'property_id' => 'setPropertyId',
         'id' => 'setId',
         'type' => 'setType',
         'name' => 'setName',
@@ -165,15 +140,8 @@ class Profile implements ModelInterface, ArrayAccess
         'emails' => 'setEmails',
         'phones' => 'setPhones',
         'addresses' => 'setAddresses',
-        'id_documents' => 'setIdDocuments',
         'loyalty_programs' => 'setLoyaltyPrograms',
-        'creator' => 'setCreator',
-        'created_date' => 'setCreatedDate',
-        'travel_agent_id' => 'setTravelAgentId',
-        'preferences' => 'setPreferences',
-        'comments' => 'setComments',
         'gender' => 'setGender',
-        'hapi_id' => 'setHapiId'
     ];
 
     /**
@@ -182,7 +150,6 @@ class Profile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'property_id' => 'getPropertyId',
         'id' => 'getId',
         'type' => 'getType',
         'name' => 'getName',
@@ -191,15 +158,8 @@ class Profile implements ModelInterface, ArrayAccess
         'emails' => 'getEmails',
         'phones' => 'getPhones',
         'addresses' => 'getAddresses',
-        'id_documents' => 'getIdDocuments',
         'loyalty_programs' => 'getLoyaltyPrograms',
-        'creator' => 'getCreator',
-        'created_date' => 'getCreatedDate',
-        'travel_agent_id' => 'getTravelAgentId',
-        'preferences' => 'getPreferences',
-        'comments' => 'getComments',
         'gender' => 'getGender',
-        'hapi_id' => 'getHapiId'
     ];
 
     /**
@@ -262,7 +222,6 @@ class Profile implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['property_id'] = isset($data['property_id']) ? $data['property_id'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
@@ -271,15 +230,8 @@ class Profile implements ModelInterface, ArrayAccess
         $this->container['emails'] = isset($data['emails']) ? $data['emails'] : null;
         $this->container['phones'] = isset($data['phones']) ? $data['phones'] : null;
         $this->container['addresses'] = isset($data['addresses']) ? $data['addresses'] : null;
-        $this->container['id_documents'] = isset($data['id_documents']) ? $data['id_documents'] : null;
         $this->container['loyalty_programs'] = isset($data['loyalty_programs']) ? $data['loyalty_programs'] : null;
-        $this->container['creator'] = isset($data['creator']) ? $data['creator'] : null;
-        $this->container['created_date'] = isset($data['created_date']) ? $data['created_date'] : null;
-        $this->container['travel_agent_id'] = isset($data['travel_agent_id']) ? $data['travel_agent_id'] : null;
-        $this->container['preferences'] = isset($data['preferences']) ? $data['preferences'] : null;
-        $this->container['comments'] = isset($data['comments']) ? $data['comments'] : null;
         $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
-        $this->container['hapi_id'] = isset($data['hapi_id']) ? $data['hapi_id'] : null;
     }
 
     /**
@@ -303,31 +255,6 @@ class Profile implements ModelInterface, ArrayAccess
     public function valid()
     {
         return count($this->listInvalidProperties()) === 0;
-    }
-
-
-    /**
-     * Gets property_id
-     *
-     * @return \HapiCommand\Model\PropertyId|null
-     */
-    public function getPropertyId()
-    {
-        return $this->container['property_id'];
-    }
-
-    /**
-     * Sets property_id
-     *
-     * @param \HapiCommand\Model\PropertyId|null $property_id property_id
-     *
-     * @return $this
-     */
-    public function setPropertyId($property_id)
-    {
-        $this->container['property_id'] = $property_id;
-
-        return $this;
     }
 
     /**
@@ -523,30 +450,6 @@ class Profile implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets id_documents
-     *
-     * @return \HapiCommand\Model\IdDocument[]|null
-     */
-    public function getIdDocuments()
-    {
-        return $this->container['id_documents'];
-    }
-
-    /**
-     * Sets id_documents
-     *
-     * @param \HapiCommand\Model\IdDocument[]|null $id_documents Identifying document for profile holder
-     *
-     * @return $this
-     */
-    public function setIdDocuments($id_documents)
-    {
-        $this->container['id_documents'] = $id_documents;
-
-        return $this;
-    }
-
-    /**
      * Gets loyalty_programs
      *
      * @return \HapiCommand\Model\LoyaltyProgram[]|null
@@ -566,126 +469,6 @@ class Profile implements ModelInterface, ArrayAccess
     public function setLoyaltyPrograms($loyalty_programs)
     {
         $this->container['loyalty_programs'] = $loyalty_programs;
-
-        return $this;
-    }
-
-    /**
-     * Gets creator
-     *
-     * @return string|null
-     */
-    public function getCreator()
-    {
-        return $this->container['creator'];
-    }
-
-    /**
-     * Sets creator
-     *
-     * @param string|null $creator User or interface who created the profile
-     *
-     * @return $this
-     */
-    public function setCreator($creator)
-    {
-        $this->container['creator'] = $creator;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_date
-     *
-     * @return string|null
-     */
-    public function getCreatedDate()
-    {
-        return $this->container['created_date'];
-    }
-
-    /**
-     * Sets created_date
-     *
-     * @param string|null $created_date Read-only date and time the profile was created
-     *
-     * @return $this
-     */
-    public function setCreatedDate($created_date)
-    {
-        $this->container['created_date'] = $created_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets travel_agent_id
-     *
-     * @return string|null
-     */
-    public function getTravelAgentId()
-    {
-        return $this->container['travel_agent_id'];
-    }
-
-    /**
-     * Sets travel_agent_id
-     *
-     * @param string|null $travel_agent_id IATA number
-     *
-     * @return $this
-     */
-    public function setTravelAgentId($travel_agent_id)
-    {
-        $this->container['travel_agent_id'] = $travel_agent_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets preferences
-     *
-     * @return \HapiCommand\Model\SpecialRequest[]|null
-     */
-    public function getPreferences()
-    {
-        return $this->container['preferences'];
-    }
-
-    /**
-     * Sets preferences
-     *
-     * @param \HapiCommand\Model\SpecialRequest[]|null $preferences Guest request
-     *
-     * @return $this
-     */
-    public function setPreferences($preferences)
-    {
-        $this->container['preferences'] = $preferences;
-
-        return $this;
-    }
-
-    /**
-     * Gets comments
-     *
-     * @return \HapiCommand\Model\Comment[]|null
-     */
-    public function getComments()
-    {
-        return $this->container['comments'];
-    }
-
-    /**
-     * Sets comments
-     *
-     * @param \HapiCommand\Model\Comment[]|null $comments Free text comments
-     *
-     * @return $this
-     */
-    public function setComments($comments)
-    {
-        $this->container['comments'] = $comments;
 
         return $this;
     }
@@ -714,29 +497,6 @@ class Profile implements ModelInterface, ArrayAccess
         return $this;
     }
 
-    /**
-     * Gets hapi_id
-     *
-     * @return string|null
-     */
-    public function getHapiId()
-    {
-        return $this->container['hapi_id'];
-    }
-
-    /**
-     * Sets hapi_id
-     *
-     * @param string|null $hapi_id UID of the profile in HAPI system
-     *
-     * @return $this
-     */
-    public function setHapiId($hapi_id)
-    {
-        $this->container['hapi_id'] = $hapi_id;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *
